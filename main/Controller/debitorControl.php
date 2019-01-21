@@ -10,6 +10,7 @@ require_once '../classes/debitor_control.php';
 //PF [lines: ~10-30]
 //passing a new hidden input field 'frontend_testing'. 
 //If == 1, no further backend processing else things process as normal.
+//value sets to 0 during testing only.
 if ( isset($_POST['frontend_testing']) && $_POST['frontend_testing'] == 1)   
 {   
     echo "<br><table>";
@@ -48,13 +49,13 @@ else
 
             $_SESSION['de_msg']='<div class="alert alert-success alert-rounded"> <i class="fa fa-check-circle"></i> Debetor registration success.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
             
-            header('Location:../debitor_reg.php');
+            header('Location:../debitor_reg.php?ok');
             exit();
 
             } else {
                 $_SESSION['de_msg']='<div class="alert alert-danger alert-rounded"> <i class="fa fa-exclamation-circle"></i> Debetor registration failed.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
                 
-                header('Location:../debitor_reg.php');
+                header('Location:../debitor_reg.php?noop');
                 exit();
 
             }

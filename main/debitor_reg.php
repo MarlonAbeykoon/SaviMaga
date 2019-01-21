@@ -237,13 +237,20 @@ if(isset($_POST['debitor_reg'])){
             var str_inputNIC_minlength = "Your National ID card number consists of at least 9 characters";
             var str_inputNIC_regx = "For example: 850961188v or 198509601188";
 
+            var str_inputNameF_required = "Please enter your First Name";
+            var str_inputNameF_minlength = "Please enter a valid First Name";
+            var str_inputNameF_maxlength = "Your First Name seems too long!";
+            var str_inputNameF_regx = "Please enter valid characters";
+
+
+
             //--form validation code begin--[PF]
             var str_validatorAddMethod_regx = "Please enter a valid value.";
-            $.validator.addMethod("regx", function(value, element, regexpr) {          
-                return regexpr.test(value);
-            }, str_validatorAddMethod_regx); 
+            $.validator.addMethod("regx", function(value, element, regexpr) {    
+                var re = new RegExp(regexpr);     
+                return this.optional(element) || re.test(value);
+            }, str_validatorAddMethod_regx);
 
-            
             $("#deb_regform").validate({    
                 rules: {
                     nic: {
@@ -251,14 +258,27 @@ if(isset($_POST['debitor_reg'])){
                         minlength: 9,
                         maxlength: 12,
                         regx: /^([0-9]{9}[V|v|X|x]$|[0-9]{12}$)/
-                    }
+                    },
+                    fname: {
+                        required: true, 
+                        minlength: 3,
+                        maxlength: 40, //--should decide on this [PF]
+                        regx: /^[^0-9@+-]{3,}$/
+                    },
                 },
                 messages: {
                     nic: {
                         required: str_inputNIC_required, 
                         minlength: str_inputNIC_minlength,
                         regx: str_inputNIC_regx
-                    }
+                    },
+                    fname: {
+                        required: str_inputNameF_required,
+                        minlength: str_inputNameF_minlength,
+                        maxlength: str_inputNameF_maxlength,
+                        regx: str_inputNameF_regx
+                    },
+                  
                 },
                 validClass: "success",
                 errorPlacement: function(error, element) {
