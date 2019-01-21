@@ -52,6 +52,25 @@ $user_de=$_SESSION['user_de'];
     
     
     <link rel="stylesheet" href="css/bootstrapValidator.css"/>
+    <style>
+        .success {
+            color: #000;
+            background-color: #f4fcf0;
+        }
+        .error {
+            color: #c44f4f;
+        }
+
+        .form-group .error {
+            margin-bottom:0px;
+        }
+
+        .error.valid {
+            color:rgb(103, 139, 112);
+        }        
+    </style>
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -77,9 +96,9 @@ $user_de=$_SESSION['user_de'];
 //    ga('send', 'pageview');
     </script>
 
- <!--<script src="../assets/plugins/jquery/jquery.min.js"></script>-->
- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- <script src="../assets/plugins/jq-validation/1.19.0/jquery.validate.min.js"></script>
+    <!--<script src="../assets/plugins/jquery/jquery.min.js"></script>-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../assets/plugins/jq-validation/1.19.0/jquery.validate.min.js"></script>
 
 
 	</head>
