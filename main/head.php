@@ -77,6 +77,9 @@ $user_de=$_SESSION['user_de'];
 //    ga('send', 'pageview');
     </script>
 
- <script src="../assets/plugins/jquery/jquery.min.js"></script>
+ <!--<script src="../assets/plugins/jquery/jquery.min.js"></script>-->
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="../assets/plugins/jq-validation/1.19.0/jquery.validate.min.js"></script>
+
 
 	</head>
