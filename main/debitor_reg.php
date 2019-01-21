@@ -247,6 +247,23 @@ if(isset($_POST['debitor_reg'])){
             var str_inputNameL_maxlength = "Your Last Name seems too long!"; 
             var str_inputNameL_regx = "Please enter valid characters";
 
+            var str_inputAddress1_required = "Please enter your Address Line 1";
+            var str_inputAddress1_minlength = "Please enter a valid Address Line 1";
+            var str_inputAddress1_maxlength = "Your Address Line 1 seems too long!";
+
+            var str_inputAddress2_required = "Please enter your Address Line 2";
+            var str_inputAddress2_minlength = "Please enter a valid Address Line 2";
+            var str_inputAddress2_maxlength = "Your Address Line 2 seems too long!";
+
+            var str_phone1_required = "Please enter a your Phone number";
+            var str_phone1_minlength = "Your Phone number is too short";
+            var str_phone1_maxlength = "Your number is too long to be valid";
+            var str_phone1_regx = "Please enter a valid Phone number";
+
+            var str_phone2_required = "Please enter a your Phone number";
+            var str_phone2_minlength = "Your Phone number is too short";
+            var str_phone2_maxlength = "Your number is too long to be valid";
+            var str_phone2_regx = "Please enter a valid Phone number";
 
             //--form validation code begin--[PF]
             var str_validatorAddMethod_regx = "Please enter a valid value.";
@@ -274,7 +291,32 @@ if(isset($_POST['debitor_reg'])){
                         minlength: 3,
                         maxlength: 80, //--should decide on this [PF]
                         regx: /^[^0-9@+-]{3,}$/
-                    },                    
+                    },  
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    address1: {
+                        required: true, 
+                        minlength: 3,
+                        maxlength: 100 //--should decide on this [PF]
+                    },
+                    address2: {
+                        required: true, 
+                        minlength: 3,
+                        maxlength: 100 //--should decide on this [PF]
+                    },
+                    phno1: {
+                        required: true, 
+                        minlength: 7,
+                        regx: /^[0-9-+]{7,}$/,
+                        maxlength: 14
+                    },
+                    phno2: {
+                        minlength: 7,
+                        regx: /^[0-9-+]{7,}$/,
+                        maxlength: 14
+                    }                                      
                 },
                 messages: {
                     nic: {
@@ -293,8 +335,28 @@ if(isset($_POST['debitor_reg'])){
                         minlength: str_inputNameL_minlength,
                         maxlength: str_inputNameL_maxlength,
                         regx: str_inputNameL_regx
-                    },                    
-                  
+                    },
+                    address1: {
+                        required: str_inputAddress1_required,
+                        minlength: str_inputAddress1_minlength,
+                        maxlength: str_inputAddress1_maxlength
+                    },
+                    address2: {
+                        required: str_inputAddress2_required,
+                        minlength: str_inputAddress2_minlength,
+                        maxlength: str_inputAddress2_maxlength
+                    },
+                    phno1: {
+                        required: str_phone1_required, 
+                        minlength: str_phone1_minlength,
+                        maxlength: str_phone1_maxlength,
+                        regx: str_phone1_regx
+                    },
+                    phno2: {
+                        minlength: str_phone2_minlength,
+                        maxlength: str_phone2_maxlength,
+                        regx: str_phone2_regx
+                    }
                 },
                 validClass: "success",
                 errorPlacement: function(error, element) {
