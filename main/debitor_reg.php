@@ -242,6 +242,10 @@ if(isset($_POST['debitor_reg'])){
             var str_inputNameF_maxlength = "Your First Name seems too long!";
             var str_inputNameF_regx = "Please enter valid characters";
 
+            var str_inputNameL_required = "Please enter a valid Last Name";
+            var str_inputNameL_minlength = "Please enter your correct Last Name";
+            var str_inputNameL_maxlength = "Your Last Name seems too long!"; 
+            var str_inputNameL_regx = "Please enter valid characters";
 
 
             //--form validation code begin--[PF]
@@ -265,6 +269,12 @@ if(isset($_POST['debitor_reg'])){
                         maxlength: 40, //--should decide on this [PF]
                         regx: /^[^0-9@+-]{3,}$/
                     },
+                    lname: {
+                        required: true, 
+                        minlength: 3,
+                        maxlength: 80, //--should decide on this [PF]
+                        regx: /^[^0-9@+-]{3,}$/
+                    },                    
                 },
                 messages: {
                     nic: {
@@ -278,6 +288,12 @@ if(isset($_POST['debitor_reg'])){
                         maxlength: str_inputNameF_maxlength,
                         regx: str_inputNameF_regx
                     },
+                    lname: {
+                        required: str_inputNameL_required,
+                        minlength: str_inputNameL_minlength,
+                        maxlength: str_inputNameL_maxlength,
+                        regx: str_inputNameL_regx
+                    },                    
                   
                 },
                 validClass: "success",
