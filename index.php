@@ -10,6 +10,14 @@ require_once 'main/classes/login.php';
 $login_f = new login_function();
 
 
+if(isset($_GET['login_token'])){
+
+  $result = $login_f -> app_login($_GET['login_token']);
+
+  if($result == "true"){
+  header('Location: main');
+  }
+}
 
 if(isset($_POST['login'])){
 
