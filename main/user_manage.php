@@ -93,7 +93,7 @@
                                                 <td><?php echo $phone_no; ?></td>
                                                 
                                                 <td>
-                                                <a class="btn btn-sm btn-rounded btn-success"  href="user_edit.php?select_edit=change_password">Reset Password</a> 
+                                                <a class="btn btn-sm btn-rounded btn-success"  href="user_edit.php?select_edit=change_password&idUser_Details=<?php echo $idUser_Details; ?>">Reset Password</a> 
                                                 <a class="btn btn-sm btn-rounded btn-primary" style="margin-left: 5px;" href="user_edit.php?select_edit=change_details&idUser_Details=<?php echo $idUser_Details; ?>">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
                                                 <a class="btn btn-sm btn-rounded btn-danger"  href="Controller/userControl.php?user_delete=<?php echo $idUser_Details; ?>">Inactive</a> 
                                                  </td>
