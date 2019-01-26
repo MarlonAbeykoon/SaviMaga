@@ -27,7 +27,7 @@ class user_function {
         if ($query_ex) {
             $new_user_id = mysqli_insert_id($this->con);
 
-            $query1 = "INSERT INTO `user` (`Uname`, `Pass`, `User_Type_idUser_Type`, `User_Details_idUser_Details`, `Status`) VALUES ('$uname', '$pass', '$utype', '$new_user_id', '1')";
+            $query1 = "INSERT INTO `oclimb_CreditSys`.`user` (`Uname`, `Pass`, `User_Type_idUser_Type`, `User_Details_idUser_Details`, `Status`) VALUES ('$uname', '$pass', '$utype', '$new_user_id', '1')";
 
             $query_ex1 = mysqli_query($this->con, $query1);
 
@@ -107,7 +107,7 @@ class user_function {
     }
 
     public function SaveCollectionAreastoCollector($area, $uid) {
-        $sql = "INSERT INTO `collection_area_user` (`CollectionArea_idCollectionArea`, `User_idUser`) VALUES ($area, $uid)";
+        $sql = "INSERT INTO `oclimb_CreditSys`.`collection_area_user` (`CollectionArea_idCollectionArea`, `User_idUser`) VALUES ($area, $uid)";
         if (mysqli_query($this->con, $sql)) {
             return true;
         } else {
