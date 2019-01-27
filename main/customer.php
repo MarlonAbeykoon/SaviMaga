@@ -112,8 +112,9 @@
                                                             FROM
                                                             credit_invoice
                                                             INNER JOIN debitors ON credit_invoice.Debitors_idDebitors = debitors.idDebitors
-                                                            WHERE
-                                                            debitors.NIC LIKE '$nic%' ORDER BY credit_invoice.DateTime desc
+                                                            where
+                                                            debitors.idDebitors = $user_de and debitors.NIC LIKE '$nic%'
+                                                             ORDER BY credit_invoice.DateTime desc
                                                             LIMIT 10");
 
                                                                 while ($result = mysqli_fetch_array($sql)) {
