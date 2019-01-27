@@ -84,6 +84,7 @@
                                                         <table class="table table-striped">
                                                             <thead>
                                                                 <tr>
+                                                                    <th>ID</th>
                                                                     <th>NIC</th>
                                                                     <th>Name</th>
                                                                     <th>Repay Amount</th>
@@ -97,6 +98,7 @@
                                                                 <?php
                                                                 $nic = $_GET['nic'];
                                                                 $sql = mysqli_query($con, "SELECT
+                                                               debitors.idDebitors,
                                                             debitors.NIC,
                                                             debitors.Fname,
                                                             credit_invoice.idCredit_Invoice,
@@ -122,6 +124,7 @@
                                                                     $date->modify("+" . $result['Days'] . " days");
                                                                     ?>
                                                                     <tr onclick="loadPaymentInfo(<?php echo $result['idCredit_Invoice']; ?>)">
+                                                                        <td><?php echo $result['idDebitors']; ?></td>
                                                                         <td><?php echo $result['NIC']; ?></td>
                                                                         <td><?php echo $result['Fname']; ?></td>
                                                                         <td><?php echo $result['TotalAmount']; ?></td>
