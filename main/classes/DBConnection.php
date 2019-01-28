@@ -6,7 +6,8 @@ class dbcon {
 
     function dbcon_function() {
 
-        $con = mysqli_connect("mysql1004.mochahost.com", "oclimb_test", "test123", "oclimb_testCredit");
+        // $con = mysqli_connect("mysql1004.mochahost.com", "oclimb_test", "test123", "oclimb_testCredit");
+        $con = mysqli_connect("localhost", "root", "DuoS123", "oclimb_testCredit");
 
         if (mysqli_connect_errno()) {
 

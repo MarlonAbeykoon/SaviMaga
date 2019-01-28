@@ -84,6 +84,7 @@
                                                         <table class="table table-striped">
                                                             <thead>
                                                                 <tr>
+                                                                    <th>ID</th>
                                                                     <th>NIC</th>
                                                                     <th>Name</th>
                                                                     <th>Repay Amount</th>
@@ -97,6 +98,7 @@
                                                                 <?php
                                                                 $nic = $_GET['nic'];
                                                                 $sql = mysqli_query($con, "SELECT
+                                                               debitors.idDebitors,
                                                             debitors.NIC,
                                                             debitors.Fname,
                                                             credit_invoice.idCredit_Invoice,
@@ -112,8 +114,9 @@
                                                             FROM
                                                             credit_invoice
                                                             INNER JOIN debitors ON credit_invoice.Debitors_idDebitors = debitors.idDebitors
-                                                            WHERE
-                                                            debitors.NIC LIKE '$nic%' ORDER BY credit_invoice.DateTime desc
+                                                            where
+                                                            debitors.idDebitors = $user_de and debitors.NIC LIKE '$nic%'
+                                                             ORDER BY credit_invoice.DateTime desc
                                                             LIMIT 10");
 
                                                                 while ($result = mysqli_fetch_array($sql)) {
@@ -121,6 +124,7 @@
                                                                     $date->modify("+" . $result['Days'] . " days");
                                                                     ?>
                                                                     <tr onclick="loadPaymentInfo(<?php echo $result['idCredit_Invoice']; ?>)">
+                                                                        <td><?php echo $result['idDebitors']; ?></td>
                                                                         <td><?php echo $result['NIC']; ?></td>
                                                                         <td><?php echo $result['Fname']; ?></td>
                                                                         <td><?php echo $result['TotalAmount']; ?></td>
