@@ -70,7 +70,7 @@
                                         </thead>
                                         <tbody>
                                         <?php
-                        $query ="SELECT * FROM `user_details` WHERE `Status` = '1'";
+                        $query ="SELECT idUser,Fname,Lname,`address`,pno,idUser_Details,u.Status as ustatus FROM `user_details` d join `user` u on  d.idUser_Details = u.User_Details_idUser_Details";
                         $query_ex= mysqli_query($con,$query);
                         while($row_de = mysqli_fetch_array($query_ex)){
 
@@ -82,7 +82,10 @@
                             */
                             $addres=$row_de['address'];
                             $phone_no=$row_de['pno'];
-                           $idUser_Details= $row_de['idUser_Details'];
+                            $idUser_Details= $row_de['idUser_Details'];
+                            $status= $row_de['ustatus'];
+                            $idUser= $row_de['idUser'];
+                           
 
                         ?>
                                             <tr>
@@ -95,7 +98,15 @@
                                                 <td>
                                                 <a class="btn btn-sm btn-rounded btn-success"  href="user_edit.php?select_edit=change_password&idUser_Details=<?php echo $idUser_Details; ?>">Reset Password</a> 
                                                 <a class="btn btn-sm btn-rounded btn-primary" style="margin-left: 5px;" href="user_edit.php?select_edit=change_details&idUser_Details=<?php echo $idUser_Details; ?>">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
+                                                <?php
+                                                if($user_de != $idUser){
+                                                if($status == '1'){ ?>
                                                 <a class="btn btn-sm btn-rounded btn-danger"  href="Controller/userControl.php?user_delete=<?php echo $idUser_Details; ?>">Inactive</a> 
+                                                <?php }else{ ?>
+                                                <a class="btn btn-sm btn-rounded btn-warning"  href="Controller/userControl.php?user_active=<?php echo $idUser_Details; ?>">Active</a>                                                     
+                                                <?php } 
+                                                }
+                                                ?>
                                                  </td>
                                             </tr>
 
