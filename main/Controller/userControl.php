@@ -67,25 +67,47 @@ if(isset($_POST['user_re'])){
 }else if(isset($_GET['user_delete'])){
 
     $idUser_Details = $_GET['user_delete'];
-    $status = $_GET['status'];
+    $status = '0';
     $result_ur=$uc -> user_status_status($idUser_Details,$status);
 
     if ($result_ur) {
       
-       $_SESSION['user_meg']='<div class="alert alert-success alert-rounded"> <i class="fa fa-check-circle"></i> User delete/activate success.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
+       $_SESSION['user_meg']='<div class="alert alert-success alert-rounded"> <i class="fa fa-check-circle"></i> User inactive success.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
        
        header('Location:../user_manage.php');
        exit();
 
    } else {
      
-       $_SESSION['user_meg']='<div class="alert alert-danger alert-rounded"> <i class="fa fa-exclamation-circle"></i> User delete/activate failed.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
+       $_SESSION['user_meg']='<div class="alert alert-danger alert-rounded"> <i class="fa fa-exclamation-circle"></i> User inactive failed.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
        
        header('Location:../user_manage.php');
        exit();
 
    }
 
+}else if(isset($_GET['user_active'])){
+
+    $idUser_Details = $_GET['user_active'];
+    $status = '1';
+    $result_ur=$uc -> user_status_status($idUser_Details,$status);
+
+    if ($result_ur) {
+      
+       $_SESSION['user_meg']='<div class="alert alert-success alert-rounded"> <i class="fa fa-check-circle"></i> User active success.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
+       
+       header('Location:../user_manage.php');
+       exit();
+
+   } else {
+     
+       $_SESSION['user_meg']='<div class="alert alert-danger alert-rounded"> <i class="fa fa-exclamation-circle"></i> User active failed.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
+       
+       header('Location:../user_manage.php');
+       exit();
+
+   }
+   
 
 }else if(isset($_POST['user_pw_change'])){
 
