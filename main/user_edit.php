@@ -10,7 +10,7 @@
 
 
 if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
-    $select_edit = $_GET['select_edit'];
+   echo $select_edit = $_GET['select_edit'];
     $idUser_Details = $_GET['idUser_Details'];
 
  
@@ -25,6 +25,7 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
         $phone_no=$row_de['pno'];
         $idUser_Type=$row_de['User_Type_idUser_Type'];
         $idUser_Details= $row_de['idUser_Details'];
+        $userid = $row_de['idUser'];
     }
 
 
@@ -71,9 +72,9 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">User Edit</h4>
+                                <h4 class="card-title">User Edit <?php echo $select_edit; ?></h4>
                                 <h6 class="card-subtitle"></h6>
-                                <?php if($select_edit == "change_details"){ ?>
+                                <?php  if($select_edit == "change_details"){ ?>
                                 <form class="form p-t-20" name="user_details" id="user_details" action="Controller/userControl.php" method="POST">
                                 <?php }else if($select_edit == "change_password"){?>
                                 <form class="form p-t-20" name="change_password" id="change_password" action="Controller/userControl.php" method="POST">
@@ -177,19 +178,8 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
                                     <button type="submit" name="user_de_change" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                         
 
-                        <?php }else if($select_edit == "change_password"){?>
-                                    <div class="form-group">
-                                        <label for="pwd2">Confirm Password</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1">
-                                                    <i class="ti-lock"></i>
-                                                </span>
-                                            </div>
-                                            <input type="password" class="form-control" name="oldpass" id="oldpass" placeholder="Enter Password">
-                                            <input type="hidden"  name="idUser_Details" id="idUser_Details" value ="<?php echo $idUser_Details; ?>">
-                                        </div>
-                                    </div>
+                        <?php }else {?>
+                                  
                                     <div class="form-group">
                                         <label for="pwd1">Password</label>
                                         <div class="input-group">
@@ -199,6 +189,7 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
                                                 </span>
                                             </div>
                                             <input type="password" class="form-control" name="newpass" id="newpass" placeholder="Enter Password">
+                                            <input type="hidden"  name="idUser_Details" id="idUser_Details" value ="<?php echo $userid; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -209,7 +200,7 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
                                                     <i class="ti-lock"></i>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control" name="cpass" id="cpass" placeholder="Enter Password">
+                                            <input type="password" class="form-control" name="newpass2" id="newpass2" placeholder="Enter Password">
                                         </div>
                                     </div>
                                     <button type="submit" name="user_pw_change" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>

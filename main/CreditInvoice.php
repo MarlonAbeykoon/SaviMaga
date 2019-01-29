@@ -133,6 +133,8 @@
                                                             <label class="control-label text-right col-md-3">Existing Applicants</label>
                                                             <div class="col-md-9">
                                                                 <select class="form-control custom-select" data-placeholder="Choose a Applicant" tabindex="1" name="extApplicant">
+
+                                                                <option value="">Select Customer</option>
                                                                     <?php
                                                                     $sql = mysqli_query($con, "SELECT debitors.idDebitors,debitors.Fname,debitors.NIC FROM debitors");
                                                                     while ($result = mysqli_fetch_array($sql)) {
@@ -219,8 +221,8 @@
                                                     </div>
 
                                                 </div>
-
-                                                <h3 class="box-title">Guarantors Details</h3>
+ 
+                                            <!--    <h3 class="box-title">Guarantors Details</h3>
                                                 <hr class="m-t-0 m-b-40">
                                                 <h4 class="box-title">First Guarantor</h4>
                                                 <hr class="m-t-0 m-b-40">
@@ -353,7 +355,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                                                 <button type="reset" class="btn btn-inverse waves-effect waves-light">Cancel</button>

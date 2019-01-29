@@ -107,7 +107,7 @@
                                                                         <td><?php echo $result['TotalAmount']; ?></td>
                                                                         <td><?php echo $date->format("Y-m-d"); ?></td>
                                                                         <td> 
-                                                                            <a href="http://edebtor.oclimb.net/main/CreditInvoice_Details.php?nic=<?php echo $result['NIC']; ?>" target="_blank" data-toggle="tooltip" data-original-title="View Customer History"> <i class="fa fa-user-secret text-inverse m-r-10"></i>View Customer History</a>
+                                                                            <a href="CreditInvoice_Details.php?nic=<?php echo $result['NIC']; ?>" target="_blank" data-toggle="tooltip" data-original-title="View Customer History"> <i class="fa fa-user-secret text-inverse m-r-10"></i>View Customer History</a>
                                                                         </td>
                                                                         <td class="text-nowrap">
                                                                             <a href="#"  onclick="ApproveLoan('<?php echo $result['idCredit_Invoice']; ?>')" data-toggle="tooltip" data-original-title="Approve Loan"> <i class="fa fa-check-circle text-inverse m-r-10"></i>Approve</a>
