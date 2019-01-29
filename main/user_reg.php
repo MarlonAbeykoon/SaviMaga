@@ -53,7 +53,7 @@ if(isset($_POST['user_re'])){
                         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">New Users</li>
                         </ol>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
@@ -270,7 +270,7 @@ $(document).ready(function() {
                     },
                     
                     regexp: {
-                        regexp: /^[A-Z a-z 0-9\s]+$/i,
+                        regexp: /^[A-Z a-z\s]+$/i,
                         message: 'Special Character\'s are not allowed'
                     }
                 }
@@ -282,7 +282,7 @@ $(document).ready(function() {
                     },
                     
                     regexp: {
-                        regexp: /^[A-Z a-z 0-9\s]+$/i,
+                        regexp: /^[A-Z a-z\s]+$/i,
                         message: 'Special Character\'s are not allowed'
                     }
                 }
@@ -303,11 +303,6 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'This field is required and cannot be empty'
-                    },
-                    
-                    regexp: {
-                        regexp: /^[A-Z a-z 0-9\s]+$/i,
-                        message: 'Special Character\'s are not allowed'
                     }
                 }
             },
