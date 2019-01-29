@@ -179,9 +179,10 @@ invoice_payments.DateTime like '$year%'");
                                         <h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> Rs.<?php echo $todayProfit; ?></h2>
                                         <span class="text-muted">Todays Income</span>
                                     </div>
-                                    <span class="text-success"><?php echo round(($todayProfit/$weekProfit)*100,2); ?>%</span>
+                                  <!--   <span class="text-success"><?php echo round(($todayProfit/$weekProfit)*100,2); ?>%</span> -->
+
                                     <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo round(($todayProfit/$weekProfit)*100,2); ?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: <?php  ?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>

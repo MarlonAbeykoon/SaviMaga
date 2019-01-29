@@ -29,7 +29,7 @@ if(isset($_POST['user_re'])){
      $result_ur=$uc -> user_reg($fname,$lname,$path,$uname,$pass,$utype,$address,$pno);
 
      if ($result_ur) {
-        $_SESSION['user_msg']='<div class="alert alert-success alert-rounded"> <i class="fa fa-check-circle"></i> User registration success.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
+        $_SESSION['user_msg']='<div class="alert alert-success alert-rounded"> <i class="fa fa-check-circle"></i> User registration successful.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
         header('Location:../user_reg.php');
         exit();
 
