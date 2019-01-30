@@ -247,6 +247,9 @@ if(isset($_POST['user_re'])){
         var str_phone_minlength = "Your Phone number is too short";
         var str_phone_maxlength = "Your number is too long to be valid";
         var str_phone_regx = "Please enter a valid Phone number";
+
+        var str_pass_required = "Please the password is required";
+        var str_pass_minlength = "Your password must have at least 6 characters";
             
         //--form validation code begin--[PF]
         var str_validatorAddMethod_regx = "Please enter a valid value.";
@@ -280,6 +283,10 @@ if(isset($_POST['user_re'])){
                     minlength: 7,
                     maxlength: 14
                 }, 
+                pass: {
+                    required: true,
+                    minlength: 6    //--should decide on this [PF]
+                },                
             },
             messages: {
                 fname: {
@@ -304,7 +311,11 @@ if(isset($_POST['user_re'])){
                     minlength: str_phone_minlength,
                     maxlength: str_phone_maxlength,
                     regx: str_phone_regx
-                },                
+                },
+                pass: {
+                    required: str_pass_required, 
+                    minlength: str_pass_minlength,                    
+                }
                 
                                
             },
