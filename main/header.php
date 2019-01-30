@@ -14,7 +14,7 @@ $user_type=$_SESSION['user_type'];
         <!-- Logo -->
         <!-- ============================================================== -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="http://g5.creditlanka.com/main/">
+            <a class="navbar-brand" href="#">
                 <!-- Logo icon -->
                 <b>
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
