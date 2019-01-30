@@ -243,6 +243,11 @@ if(isset($_POST['user_re'])){
         var str_inputAddress_minlength = "Please enter a valid Address";
         var str_inputAddress_maxlength = "Your Address seems little too long!";
 
+        var str_phone_required = "Please enter a your Phone number";
+        var str_phone_minlength = "Your Phone number is too short";
+        var str_phone_maxlength = "Your number is too long to be valid";
+        var str_phone_regx = "Please enter a valid Phone number";
+            
         //--form validation code begin--[PF]
         var str_validatorAddMethod_regx = "Please enter a valid value.";
         $.validator.addMethod("regx", function(value, element, regexpr) {    
@@ -265,10 +270,16 @@ if(isset($_POST['user_re'])){
                     regx: /^[^0-9@+-]{3,}$/
                 },
                 address: {
-                        required: true, 
-                        minlength: 3,
-                        maxlength: 200 //--should decide on this [PF]
-                },                
+                    required: true, 
+                    minlength: 3,
+                    maxlength: 200 //--should decide on this [PF]
+                },
+                phno: {
+                    required: true, 
+                    regx: /^[0-9-+]{7,}$/,
+                    minlength: 7,
+                    maxlength: 14
+                }, 
             },
             messages: {
                 fname: {
@@ -284,10 +295,18 @@ if(isset($_POST['user_re'])){
                     regx: str_inputNameL_regx
                 },
                 address: {
-                        required: str_inputAddress_required,
-                        minlength: str_inputAddress_minlength,
-                        maxlength: str_inputAddress_maxlength
+                    required: str_inputAddress_required,
+                    minlength: str_inputAddress_minlength,
+                    maxlength: str_inputAddress_maxlength
+                },
+                phno: {
+                    required: str_phone_required, 
+                    minlength: str_phone_minlength,
+                    maxlength: str_phone_maxlength,
+                    regx: str_phone_regx
                 },                
+                
+                               
             },
             validClass: "success",
             errorPlacement: function(error, element) {
