@@ -86,7 +86,7 @@ if(isset($_POST['user_re'])){
                                                 </span>
                                             </div>
                                             <select class="form-control custom-select" id="user_ty" data-placeholder="Choose a Applicant" tabindex="1" name="user_ty">
-                        <option value="">-Select User Type-</option>
+                        <option value="">User Type</option>
 
                         <?php
                         $query ="SELECT * FROM `user_type` WHERE `Status` = '1'";
@@ -229,6 +229,8 @@ if(isset($_POST['user_re'])){
 
     <script>
     $(document).ready(function() {
+        var str_user_ty_required = "Please select a User Type";
+
         var str_inputNameU_required = "Please enter your User Name";
         var str_inputNameU_minlength = "Please enter a valid User Name";
         var str_inputNameU_maxlength = "Your User Name seems too long!";
@@ -265,9 +267,12 @@ if(isset($_POST['user_re'])){
             var re = new RegExp(regexpr);     
             return this.optional(element) || re.test(value);
         }, str_validatorAddMethod_regx);
-    
+
         $("#user_regform").validate({    
             rules: {
+                user_ty: {
+                    required: true
+                },
                 uname: {
                     required: true, 
                     minlength: 3,
@@ -304,9 +309,12 @@ if(isset($_POST['user_re'])){
                     required: true,
                     minlength: 5,
                     equalTo: "#pass"
-                },             
+                }
             },
             messages: {
+                user_ty: {
+                    required: str_user_ty_required 
+                },                
                 uname: {
                     required: str_inputNameU_required,
                     minlength: str_inputNameU_minlength,
@@ -343,7 +351,7 @@ if(isset($_POST['user_re'])){
                     required: str_cpass_required, 
                     minlength: str_cpass_minlength,
                     equalTo: str_cpass_equalTo
-                }, 
+                }
             },
             validClass: "success",
             errorPlacement: function(error, element) {
@@ -404,6 +412,10 @@ if(isset($_POST['user_re'])){
         //--[PF]
         $("#user_regform select").change(function() {
             var enteredValue = $(this).val();
+            if( enteredValue == ""){
+                //trigger
+                $("#user_regform").validate().element( "#"+$(this).attr('id') );
+            }
             console.log($(this).attr('id') +' [changed] val: '+enteredValue+' class: '+$(this).attr('class'));
         }); 
 
