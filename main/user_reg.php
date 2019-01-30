@@ -104,7 +104,7 @@ if(isset($_POST['user_re'])){
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">
-                                                    <i class="ti-user"></i>
+                                                    <i class="ti-flag"></i>
                                                 </span>
                                             </div>
                                             <input type="text" class="form-control" name="uname" id="uname" placeholder="Username">
