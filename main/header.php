@@ -225,7 +225,7 @@ WHERE user.idUser = $user_de");
     <?php }else{ ?>
 
                 <li>
-                    <a class="" href="index.php" aria-expanded="false"><i class="mdi mdi-gauge"></i>Dashboard </a>
+                    <a class="" href="index.php" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
                 </li>
                 <li>
                     <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Customer</span></a>
