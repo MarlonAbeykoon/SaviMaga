@@ -86,7 +86,7 @@ if(isset($_POST['user_re'])){
                                                 </span>
                                             </div>
                                             <select class="form-control custom-select" id="user_ty" data-placeholder="Choose a Applicant" tabindex="1" name="user_ty">
-                        <option value="">User Type</option>
+                        <option value="">-- select an option --</option>
 
                         <?php
                         $query ="SELECT * FROM `user_type` WHERE `Status` = '1'";
