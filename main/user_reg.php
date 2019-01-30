@@ -82,7 +82,7 @@ if(isset($_POST['user_re'])){
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">
-                                                    <i class="ti-user"></i>
+                                                    <i class="ti-tag"></i>
                                                 </span>
                                             </div>
                                             <select class="form-control custom-select" id="user_ty" data-placeholder="Choose a Applicant" tabindex="1" name="user_ty">
