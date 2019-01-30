@@ -239,6 +239,10 @@ if(isset($_POST['user_re'])){
         var str_inputNameL_maxlength = "Your Last Name seems too long!"; 
         var str_inputNameL_regx = "Please enter valid characters";
 
+        var str_inputAddress_required = "Please enter your correct Address";
+        var str_inputAddress_minlength = "Please enter a valid Address";
+        var str_inputAddress_maxlength = "Your Address seems little too long!";
+
         //--form validation code begin--[PF]
         var str_validatorAddMethod_regx = "Please enter a valid value.";
         $.validator.addMethod("regx", function(value, element, regexpr) {    
@@ -259,7 +263,12 @@ if(isset($_POST['user_re'])){
                     minlength: 3,
                     maxlength: 80, //--should decide on this [PF]
                     regx: /^[^0-9@+-]{3,}$/
-                }
+                },
+                address: {
+                        required: true, 
+                        minlength: 3,
+                        maxlength: 200 //--should decide on this [PF]
+                },                
             },
             messages: {
                 fname: {
@@ -273,7 +282,12 @@ if(isset($_POST['user_re'])){
                     minlength: str_inputNameL_minlength,
                     maxlength: str_inputNameL_maxlength,
                     regx: str_inputNameL_regx
-                }
+                },
+                address: {
+                        required: str_inputAddress_required,
+                        minlength: str_inputAddress_minlength,
+                        maxlength: str_inputAddress_maxlength
+                },                
             },
             validClass: "success",
             errorPlacement: function(error, element) {
