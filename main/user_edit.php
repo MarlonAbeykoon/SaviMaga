@@ -266,6 +266,13 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
         var str_phone_maxlength = "Your number is too long to be valid";
         var str_phone_regx = "Please enter a valid Phone number";
 
+        var str_pass_required = "Please the password is required";
+        var str_pass_minlength = "Your password must have at least 6 characters";
+
+        var str_cpass_required = "Please the confirm password is required";
+        var str_cpass_minlength = "Your confirm password must have at least 6 characters";  
+        var str_cpass_equalTo = "This should match with the password above";   
+
     //--form validation code begin--[PF]
     var str_validatorAddMethod_regx = "Please enter a valid value.";
         $.validator.addMethod("regx", function(value, element, regexpr) {    
@@ -273,7 +280,7 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
             return this.optional(element) || re.test(value);
         }, str_validatorAddMethod_regx);
 
-        $("#user_details").validate({    
+        $("#user_details, #change_password").validate({    
             rules: {
                 user_ty: {
                     required: true
@@ -305,7 +312,16 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
                     regx: /^[0-9-+]{7,}$/,
                     minlength: 7,
                     maxlength: 14
-                }
+                },
+                newpass: {
+                    required: true,
+                    minlength: 6    //--should decide on this [PF]
+                }, 
+                newpass2: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#newpass"
+                }                
 
             },
             messages: {
@@ -339,7 +355,16 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
                     minlength: str_phone_minlength,
                     maxlength: str_phone_maxlength,
                     regx: str_phone_regx
-                }
+                },
+                newpass: {
+                    required: str_pass_required, 
+                    minlength: str_pass_minlength
+                },
+                newpass2: {
+                    required: str_cpass_required, 
+                    minlength: str_cpass_minlength,
+                    equalTo: str_cpass_equalTo
+                }                
 
             },
             validClass: "success",
