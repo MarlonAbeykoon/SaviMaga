@@ -72,7 +72,7 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">User Edit <?php echo $select_edit; ?></h4>
+                                <h4 class="card-title">User Edit <i class="text-muted"><?php echo str_replace('_', ' ', $select_edit); ?></i></h4>
                                 <h6 class="card-subtitle"></h6>
                                 <?php  if($select_edit == "change_details"){ ?>
                                 <form class="form p-t-20" name="user_details" id="user_details" action="Controller/userControl.php" method="POST">
