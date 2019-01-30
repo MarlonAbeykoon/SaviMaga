@@ -229,6 +229,10 @@ if(isset($_POST['user_re'])){
 
     <script>
     $(document).ready(function() {
+        var str_inputNameU_required = "Please enter your User Name";
+        var str_inputNameU_minlength = "Please enter a valid User Name";
+        var str_inputNameU_maxlength = "Your User Name seems too long!";
+
         var str_inputNameF_required = "Please enter your First Name";
         var str_inputNameF_minlength = "Please enter a valid First Name";
         var str_inputNameF_maxlength = "Your First Name seems too long!";
@@ -264,6 +268,11 @@ if(isset($_POST['user_re'])){
     
         $("#user_regform").validate({    
             rules: {
+                uname: {
+                    required: true, 
+                    minlength: 3,
+                    maxlength: 15, //--should decide on this [PF]
+                },                
                 fname: {
                     required: true, 
                     minlength: 3,
@@ -298,6 +307,11 @@ if(isset($_POST['user_re'])){
                 },             
             },
             messages: {
+                uname: {
+                    required: str_inputNameU_required,
+                    minlength: str_inputNameU_minlength,
+                    maxlength: str_inputNameU_maxlength
+                },                
                 fname: {
                     required: str_inputNameF_required,
                     minlength: str_inputNameF_minlength,
