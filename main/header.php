@@ -1,5 +1,10 @@
 <?php
-session_start();
+if(empty(session_id()))
+{   // [PF] - Error Fixed
+    // session_id() returns the session id for the curr. session or the ("") if 
+    // there is no current session (then no current session id exists).
+    session_start();
+}
 if(!isset($_SESSION['user_de'])){
     header('Location:../index.php');
     exit();
