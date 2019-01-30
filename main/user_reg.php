@@ -250,6 +250,10 @@ if(isset($_POST['user_re'])){
 
         var str_pass_required = "Please the password is required";
         var str_pass_minlength = "Your password must have at least 6 characters";
+
+        var str_cpass_required = "Please the confirm password is required";
+        var str_cpass_minlength = "Your confirm password must have at least 6 characters";  
+        var str_cpass_equalTo = "This should match with the password above";      
             
         //--form validation code begin--[PF]
         var str_validatorAddMethod_regx = "Please enter a valid value.";
@@ -286,7 +290,12 @@ if(isset($_POST['user_re'])){
                 pass: {
                     required: true,
                     minlength: 6    //--should decide on this [PF]
-                },                
+                }, 
+                cpass: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#pass"
+                },             
             },
             messages: {
                 fname: {
@@ -314,10 +323,13 @@ if(isset($_POST['user_re'])){
                 },
                 pass: {
                     required: str_pass_required, 
-                    minlength: str_pass_minlength,                    
-                }
-                
-                               
+                    minlength: str_pass_minlength
+                },
+                cpass: {
+                    required: str_cpass_required, 
+                    minlength: str_cpass_minlength,
+                    equalTo: str_cpass_equalTo
+                }, 
             },
             validClass: "success",
             errorPlacement: function(error, element) {
