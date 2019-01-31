@@ -311,7 +311,7 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
                     required: true, 
                     regx: /^[0-9-+]{7,}$/,
                     minlength: 7,
-                    maxlength: 14
+                    maxlength: 14 //--BUG 69 Fixed [PF]
                 },
                 newpass: {
                     required: true,
