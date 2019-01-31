@@ -108,10 +108,12 @@
                                     <div class="form-group row p-t-20">
                                         <div class="col-sm-4">
                                             <div class="m-b-10">
-                                                <label class="custom-control custom-radio">
+                                                <div class="custom-control custom-radio">
+                                                <label>
                                                     <input id="Applicant1" name="radio" value="0" type="radio" class="custom-control-input" onclick="LoadApplicant()" checked="checked">
                                                     <span class="custom-control-label">Existing Applicant</span>
                                                 </label>
+                                                </div>
                                             </div>
                                             <div class="m-b-10">
                                                 <label class="custom-control custom-radio">
