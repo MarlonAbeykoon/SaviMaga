@@ -94,12 +94,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <?php
-                                    if ($_GET['msg'] == "success") {
+                                    if (isset($_GET['msg']) && $_GET['msg'] == "success") {
                                         ?>
                                         <div class="alert alert-success alert-rounded">Loan Application Details Successfully Saved.
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
                                         </div>
-                                    <?php } else if ($_GET['msg'] == "fail") { ?>
+                                    <?php } else if (isset($_GET['msg']) && $_GET['msg'] == "fail") { ?>
                                         <div class="alert alert-danger alert-rounded">Error: Please refill details and submit again.
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
                                         </div>
