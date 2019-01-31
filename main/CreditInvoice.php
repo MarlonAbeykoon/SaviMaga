@@ -109,17 +109,19 @@
                                         <div class="col-sm-4">
                                             <div class="m-b-10">
                                                 <div class="custom-control custom-radio">
-                                                <label>
-                                                    <input id="Applicant1" name="radio" value="0" type="radio" class="custom-control-input" onclick="LoadApplicant()" checked="checked">
-                                                    <span class="custom-control-label">Existing Applicant</span>
-                                                </label>
+                                                    <label>
+                                                        <input id="Applicant1" name="radio" value="0" type="radio" class="custom-control-input" onclick="LoadApplicant()" checked="checked">
+                                                        <span class="custom-control-label">Existing Applicant</span>
+                                                    </label>
                                                 </div>
                                             </div>
                                             <div class="m-b-10">
-                                                <label class="custom-control custom-radio">
-                                                    <input id="Applicant2" name="radio"  value="1" type="radio" class="custom-control-input" onclick="LoadApplicant()">
-                                                    <span class="custom-control-label">New Applicant</span>
-                                                </label>
+                                                <div class = "custom-control custom-radio">
+                                                    <label>
+                                                        <input id="Applicant2" name="radio"  value="1" type="radio" class="custom-control-input" onclick="LoadApplicant()">
+                                                        <span class="custom-control-label">New Applicant</span>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
