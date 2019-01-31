@@ -10,7 +10,7 @@
 
 
 if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
-   echo $select_edit = $_GET['select_edit'];
+   $select_edit = $_GET['select_edit'];
     $idUser_Details = $_GET['idUser_Details'];
 
  
