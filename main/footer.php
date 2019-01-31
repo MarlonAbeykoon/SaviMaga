@@ -1,6 +1,6 @@
 ﻿<footer class="footer">
-                © 2019 Oclimb Solution
-            </footer>
+                &copy; <?php echo date("Y"); ?> Copyright. G5 Solution
+ </footer>
 
 
     <!-- Bootstrap tether Core JavaScript -->

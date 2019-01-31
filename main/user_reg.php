@@ -53,7 +53,7 @@ if(isset($_POST['user_re'])){
                         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">New Users</li>
                         </ol>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
@@ -82,11 +82,11 @@ if(isset($_POST['user_re'])){
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">
-                                                    <i class="ti-user"></i>
+                                                    <i class="ti-tag"></i>
                                                 </span>
                                             </div>
                                             <select class="form-control custom-select" id="user_ty" data-placeholder="Choose a Applicant" tabindex="1" name="user_ty">
-                        <option value="">-Select User Type-</option>
+                        <option value="">-- select an option --</option>
 
                         <?php
                         $query ="SELECT * FROM `user_type` WHERE `Status` = '1'";
@@ -104,7 +104,7 @@ if(isset($_POST['user_re'])){
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">
-                                                    <i class="ti-user"></i>
+                                                    <i class="ti-flag"></i>
                                                 </span>
                                             </div>
                                             <input type="text" class="form-control" name="uname" id="uname" placeholder="Username">
@@ -226,152 +226,204 @@ if(isset($_POST['user_re'])){
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
-   
-  </body>
 
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#user_regform').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            user_ty: {
-                validators: {
-                    notEmpty: {
-                        message: 'This field is required and cannot be empty'
-                    }
-                }
-            },
-            uname: {
-             
-                validators: {
-                    notEmpty: {
-                        message: 'This field is required and cannot be empty'
-                    },
-                    stringLength: {
-                        min: 6,
-                        max: 30,
-                        message: 'The username must be more than 6 and less than 30 characters long'
-                    },
-                    regexp: {
-                        regexp: /^[A-Za-z0-9]+$/i,
-                        message: 'Special Character\'s are not allowed'
-                    }
-                }
-            },
-            fname: {
-                validators: {
-                    notEmpty: {
-                        message: 'This field is required and cannot be empty'
-                    },
-                    
-                    regexp: {
-                        regexp: /^[A-Z a-z 0-9\s]+$/i,
-                        message: 'Special Character\'s are not allowed'
-                    }
-                }
-            },
-            lname: {
-                validators: {
-                    notEmpty: {
-                        message: 'This field is required and cannot be empty'
-                    },
-                    
-                    regexp: {
-                        regexp: /^[A-Z a-z 0-9\s]+$/i,
-                        message: 'Special Character\'s are not allowed'
-                    }
-                }
-            },
-           
-           /*  email: {
-               
-                validators: {
-                    notEmpty: {
-                        message: 'This field is required and cannot be empty'
-                    },
-                    emailAddress: {
-                        message: 'The value is not a valid email address'
-                    }
-                }
-            }, */
-            address: {
-                validators: {
-                    notEmpty: {
-                        message: 'This field is required and cannot be empty'
-                    },
-                    
-                    regexp: {
-                        regexp: /^[A-Z a-z 0-9\s]+$/i,
-                        message: 'Special Character\'s are not allowed'
-                    }
-                }
-            },
-          
-           
-            phno: {
-               
-               validators: {
-                notEmpty: {
-                        message: 'This field is required and cannot be empty'
-                    },
-        stringLength: {
-           max: 10,
-           message: 'The value must be less than 10 characters'
+    <script>
+    $(document).ready(function() {
+        var str_user_ty_required = "Please select a User Type";
+
+        var str_inputNameU_required = "Please enter your User Name";
+        var str_inputNameU_minlength = "Please enter a valid User Name";
+        var str_inputNameU_maxlength = "Your User Name seems too long!";
+
+        var str_inputNameF_required = "Please enter your First Name";
+        var str_inputNameF_minlength = "Please enter a valid First Name";
+        var str_inputNameF_maxlength = "Your First Name seems too long!";
+        var str_inputNameF_regx = "Please enter valid characters";
+
+        var str_inputNameL_required = "Please enter a valid Last Name";
+        var str_inputNameL_minlength = "Please enter your correct Last Name";
+        var str_inputNameL_maxlength = "Your Last Name seems too long!"; 
+        var str_inputNameL_regx = "Please enter valid characters";
+
+        var str_inputAddress_required = "Please enter your correct Address";
+        var str_inputAddress_minlength = "Please enter a valid Address";
+        var str_inputAddress_maxlength = "Your Address seems little too long!";
+
+        var str_phone_required = "Please enter a your Phone number";
+        var str_phone_minlength = "Your Phone number is too short";
+        var str_phone_maxlength = "Your number is too long to be valid";
+        var str_phone_regx = "Please enter a valid Phone number";
+
+        var str_pass_required = "Please the password is required";
+        var str_pass_minlength = "Your password must have at least 6 characters";
+
+        var str_cpass_required = "Please the confirm password is required";
+        var str_cpass_minlength = "Your confirm password must have at least 6 characters";  
+        var str_cpass_equalTo = "This should match with the password above";      
+            
+        //--form validation code begin--[PF]
+        var str_validatorAddMethod_regx = "Please enter a valid value.";
+        $.validator.addMethod("regx", function(value, element, regexpr) {    
+            var re = new RegExp(regexpr);     
+            return this.optional(element) || re.test(value);
+        }, str_validatorAddMethod_regx);
+
+        $("#user_regform").validate({    
+            rules: {
+                user_ty: {
+                    required: true
                 },
-                    
-                    regexp: {
-                        regexp: /^[0-9]+$/i,
-                        message: 'Special Character\'s are not allowed'
-                    }
-
-               }
-           },
-           pass: {
-            validators: {
-
-                notEmpty: {
-                        message: 'This field is required and cannot be empty'
-                    },
-                    
-                    regexp: {
-                        regexp: /^[A-Za-z0-9]+$/i,
-                        message: 'Special Character\'s are not allowed'
-                    },
-
-                identical: {
-                    field: 'cpass',
-                    message: 'The password and its confirm are not the same'
+                uname: {
+                    required: true, 
+                    minlength: 3,
+                    maxlength: 15, //--should decide on this [PF]
+                },                
+                fname: {
+                    required: true, 
+                    minlength: 3,
+                    maxlength: 40, //--should decide on this [PF]
+                    regx: /^[^0-9@+-]{3,}$/
+                },
+                lname: {
+                    required: true, 
+                    minlength: 3,
+                    maxlength: 80, //--should decide on this [PF]
+                    regx: /^[^0-9@+-]{3,}$/
+                },
+                address: {
+                    required: true, 
+                    minlength: 3,
+                    maxlength: 200 //--should decide on this [PF]
+                },
+                phno: {
+                    required: true, 
+                    regx: /^[0-9-+]{7,}$/,
+                    minlength: 7,
+                    maxlength: 14
+                }, 
+                pass: {
+                    required: true,
+                    minlength: 6    //--should decide on this [PF]
+                }, 
+                cpass: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#pass"
                 }
-            }
-        },
-        cpass: {
-            validators: {
-                notEmpty: {
-                        message: 'This field is required and cannot be empty'
-                    },
-                    
-                    regexp: {
-                        regexp: /^[A-Za-z0-9]+$/i,
-                        message: 'Special Character\'s are not allowed'
-                    },
-                identical: {
-                    field: 'pass',
-                    message: 'The password and its confirm are not the same'
+            },
+            messages: {
+                user_ty: {
+                    required: str_user_ty_required 
+                },                
+                uname: {
+                    required: str_inputNameU_required,
+                    minlength: str_inputNameU_minlength,
+                    maxlength: str_inputNameU_maxlength
+                },                
+                fname: {
+                    required: str_inputNameF_required,
+                    minlength: str_inputNameF_minlength,
+                    maxlength: str_inputNameF_maxlength,
+                    regx: str_inputNameF_regx
+                },
+                lname: {
+                    required: str_inputNameL_required,
+                    minlength: str_inputNameL_minlength,
+                    maxlength: str_inputNameL_maxlength,
+                    regx: str_inputNameL_regx
+                },
+                address: {
+                    required: str_inputAddress_required,
+                    minlength: str_inputAddress_minlength,
+                    maxlength: str_inputAddress_maxlength
+                },
+                phno: {
+                    required: str_phone_required, 
+                    minlength: str_phone_minlength,
+                    maxlength: str_phone_maxlength,
+                    regx: str_phone_regx
+                },
+                pass: {
+                    required: str_pass_required, 
+                    minlength: str_pass_minlength
+                },
+                cpass: {
+                    required: str_cpass_required, 
+                    minlength: str_cpass_minlength,
+                    equalTo: str_cpass_equalTo
                 }
+            },
+            validClass: "success",
+            errorPlacement: function(error, element) {
+                //console.log(element.attr('id')+' '+element.closest('div').attr('class'));
+                if( element.closest('div').is('[class^="input-group"]') ) {
+                    //to check one particular element, you'd use .is(), not hasClass:
+
+                    //otherwise bootsrap labels break when on displaying validation error
+                    error.insertAfter(element.closest('div'));
+                }
+                else {
+                    error.insertAfter(element);
+                }
+            },
+            invalidHandler: function(event, validator) {
+                //Callback for custom code when an invalid form is submitted. 
+
+                var errors = validator.numberOfInvalids(); //number of errors
+                console.log('errors: ' + errors);
+
+                for (var i=0;i<validator.errorList.length;i++){
+                    console.log(validator.errorList[i]);
+                } 
+
+                for (var i in validator.errorMap) {
+                    console.log(i, ":", validator.errorMap[i]);
+                }                                          
             }
-        }
+        });
 
+        //these edits are important for form validation to works nicely--[PF]
+        $("#user_regform input, #user_regform select").focus(function() {
+            //checkboxes also includes if any
+            var enteredValue = $(this).val();
+            console.log($(this).attr('id') +' [focused] val: '+enteredValue+' class: '+$(this).attr('class'));
 
+            //removing success class when no valid value (Choose.. OR selectedIndex is 0) selected in a dropdown (on focus of dropdown menu)
+            if( ($(this)[0].selectedIndex == 0) && $(this).hasClass('success')) {
+                $(this).removeClass('success');
+            }  
+        });
 
-           
-        }
-    });
-});
-</script>
+        //these edits are important for form validation to works nicely--[PF]
+        $("#user_regform input, #user_regform select").blur(function() {
+            //checkboxes also includes
+            var enteredValue = $(this).val();
+            console.log($(this).attr('id') +' [blured] val: '+enteredValue +' class: '+$(this).attr('class'));
+            
+            if( (enteredValue == null || enteredValue == "") && $(this).hasClass('success')) {
+                $(this).removeClass('success');
+            }
+
+            if( ($(this)[0].selectedIndex == 0) && $(this).hasClass('success')) {
+                $(this).removeClass('success');
+            }                     
+        });            
+        
+        //--[PF]
+        $("#user_regform select").change(function() {
+            var enteredValue = $(this).val();
+            if( enteredValue == ""){
+                //trigger
+                $("#user_regform").validate().element( "#"+$(this).attr('id') );
+            }
+            console.log($(this).attr('id') +' [changed] val: '+enteredValue+' class: '+$(this).attr('class'));
+        }); 
+
+        //--form validation code end--[PF]
+    }); 
+
+    </script>
+
+  </body>
 
 </html>

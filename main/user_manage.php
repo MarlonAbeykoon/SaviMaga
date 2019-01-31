@@ -65,7 +65,7 @@
                                                 <th>Name</th>
                                                 <th>Address</th>
                                                 <th>Phone No</th>
-                                                <th>Status</th>
+                                                <th>Options</th>
                                             </tr>
                                         </thead>
                                         <tbody>

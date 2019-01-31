@@ -1,5 +1,10 @@
 <?php
-session_start();
+if(empty(session_id()))
+{   // [PF] - Error Fixed
+    // session_id() returns the session id for the curr. session or the ("") if 
+    // there is no current session (then no current session id exists).
+    session_start();
+}
 if(!isset($_SESSION['user_de'])){
     header('Location:../index.php');
     exit();
@@ -14,7 +19,7 @@ $user_type=$_SESSION['user_type'];
         <!-- Logo -->
         <!-- ============================================================== -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="http://g5.creditlanka.com/main/">
+            <a class="navbar-brand" href="#">
                 <!-- Logo icon -->
                 <b>
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -225,7 +230,7 @@ WHERE user.idUser = $user_de");
     <?php }else{ ?>
 
                 <li>
-                    <a class="" href="index.php" aria-expanded="false"><i class="mdi mdi-gauge"></i>Dashboard </a>
+                    <a class="" href="index.php" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
                 </li>
                 <li>
                     <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Customer</span></a>

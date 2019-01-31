@@ -94,12 +94,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <?php
-                                    if ($_GET['msg'] == "success") {
+                                    if (isset($_GET['msg']) && $_GET['msg'] == "success") {
                                         ?>
                                         <div class="alert alert-success alert-rounded">Loan Application Details Successfully Saved.
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
                                         </div>
-                                    <?php } else if ($_GET['msg'] == "fail") { ?>
+                                    <?php } else if (isset($_GET['msg']) && $_GET['msg'] == "fail") { ?>
                                         <div class="alert alert-danger alert-rounded">Error: Please refill details and submit again.
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
                                         </div>
@@ -108,16 +108,20 @@
                                     <div class="form-group row p-t-20">
                                         <div class="col-sm-4">
                                             <div class="m-b-10">
-                                                <label class="custom-control custom-radio">
-                                                    <input id="Applicant1" name="radio" value="0" type="radio" class="custom-control-input" onclick="LoadApplicant()" checked="checked">
-                                                    <span class="custom-control-label">Existing Applicant</span>
-                                                </label>
+                                                <div class="custom-control custom-radio">
+                                                    <label>
+                                                        <input id="Applicant1" name="radio" value="0" type="radio" class="custom-control-input" onclick="LoadApplicant()" checked="checked">
+                                                        <span class="custom-control-label">Existing Applicant</span>
+                                                    </label>
+                                                </div>
                                             </div>
                                             <div class="m-b-10">
-                                                <label class="custom-control custom-radio">
-                                                    <input id="Applicant2" name="radio"  value="1" type="radio" class="custom-control-input" onclick="LoadApplicant()">
-                                                    <span class="custom-control-label">New Applicant</span>
-                                                </label>
+                                                <div class = "custom-control custom-radio">
+                                                    <label>
+                                                        <input id="Applicant2" name="radio"  value="1" type="radio" class="custom-control-input" onclick="LoadApplicant()">
+                                                        <span class="custom-control-label">New Applicant</span>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

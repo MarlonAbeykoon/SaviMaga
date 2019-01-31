@@ -275,8 +275,8 @@ if(isset($_POST['debitor_reg'])){
             $("#deb_regform").validate({    
                 rules: {
                     nic: {
-                        required: true, 
                         minlength: 9,
+                        required: true, 
                         maxlength: 12,
                         regx: /^([0-9]{9}[V|v|X|x]$|[0-9]{12}$)/
                     },
