@@ -134,11 +134,11 @@ if ($id == '0') {
 
             <div class="form-group row">
 
-                <label class="control-label text-right col-md-3">NIC No</label>
+                <label class="control-label text-right col-md-3">NIC No.</label>
 
                 <div class="col-md-9">
 
-                    <input type="text" class="form-control" name="nic" placeholder="123456789V" required>
+                    <input type="text" class="form-control" name="nic" placeholder="ID Card No." required>
 
                     <small class="form-control-feedback"></small> </div>
 
