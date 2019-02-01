@@ -76,7 +76,7 @@ if ($id == '0') {
 
                 <div class="col-md-9">
 
-                    <input type="text" class="form-control" name="lastName" placeholder="doe" required pattern="^[A-Za-z -]+$">
+                    <input type="text" class="form-control" name="lastName" placeholder="Last Name" required pattern="^[A-Za-z -]+$">
 
                     <small class="form-control-feedback"></small> </div>
 
