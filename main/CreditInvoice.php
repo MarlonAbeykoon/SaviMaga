@@ -219,7 +219,7 @@
                                                         <div class="form-group row">
                                                             <label class="control-label text-right col-md-3">Daily Payment</label>
                                                             <div class="col-md-9">
-                                                                <input type="text" class="form-control" name="dpay" id="dpay" onchange="BackwardCalculate();">
+                                                                <input type="text" disabled class="form-control" name="dpay" id="dpay" onchange="BackwardCalculate();">
                                                             </div>
                                                         </div>
                                                     </div>
