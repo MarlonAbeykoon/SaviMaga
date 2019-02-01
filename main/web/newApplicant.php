@@ -156,11 +156,11 @@ if ($id == '0') {
 
             <div class="form-group row">
 
-                <label class="control-label text-right col-md-3">Phone No1</label>
+                <label class="control-label text-right col-md-3">Phone No 1</label>
 
                 <div class="col-md-9">
 
-                    <input type="text" class="form-control" name="phone1" placeholder="123456789" required pattern="[0-9]{10}" title="10 Digit Phone No">
+                    <input type="text" class="form-control" name="phone1" placeholder="Phone 1" required pattern="[0-9]{10}" title="10 Digit Phone No">
 
                     <small class="form-control-feedback"></small> </div>
 
