@@ -127,7 +127,7 @@
                                     </div>
                                     <h6 class="card-subtitle"></h6>
 
-                                    <form action="Controller/CreditInvoiceControl.php" class="form-horizontal" method="POST">
+                                    <form action="Controller/CreditInvoiceControl.php" class="form-horizontal" method="POST" id="loan_details">
                                         <div class="form-body">
                                             <div id="Applicant" >
 
@@ -138,7 +138,7 @@
                                                             <div class="col-md-9">
                                                                 <select class="form-control custom-select" data-placeholder="Choose a Applicant" tabindex="1" name="extApplicant">
 
-                                                                <option value="">Select Customer</option>
+                                                                <option value="">-- select customer --</option>
                                                                     <?php
                                                                     $sql = mysqli_query($con, "SELECT debitors.idDebitors,debitors.Fname,debitors.NIC FROM debitors");
                                                                     while ($result = mysqli_fetch_array($sql)) {
@@ -163,6 +163,9 @@
                                                             <label class="control-label text-right col-md-3">Collection Area</label>
                                                             <div class="col-md-9">
                                                                 <select class="form-control custom-select" data-placeholder="Choose a Area" tabindex="1" name="area">
+
+                                                                <option value="">-- select area --</option>
+
                                                                     <?php
                                                                     $sql = mysqli_query($con, "SELECT * FROM collectionarea");
                                                                     while ($result = mysqli_fetch_array($sql)) {
@@ -183,7 +186,7 @@
                                                         <div class="form-group row">
                                                             <label class="control-label text-right col-md-3">Applying Amount</label>
                                                             <div class="col-md-9">
-                                                                <input type="text" class="form-control" name="amount" onchange="Calculate();" required pattern="[0-9]+(\.[0-9][0-9]?)?">
+                                                                <input type="text" class="form-control" name="amount" id="amount" onchange="Calculate();" required pattern="[0-9]+(\.[0-9][0-9]?)?">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -191,7 +194,7 @@
                                                         <div class="form-group row">
                                                             <label class="control-label text-right col-md-3">Interest Rate</label>
                                                             <div class="col-md-9">
-                                                                <input type="text" class="form-control" name="rate" onchange="Calculate();" required pattern="[0-9]+(\.[0-9][0-9]?)?">
+                                                                <input type="text" class="form-control" name="rate" id="rate" onchange="Calculate();" required pattern="[0-9]+(\.[0-9][0-9]?)?">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -201,7 +204,7 @@
                                                         <div class="form-group row">
                                                             <label class="control-label text-right col-md-3">Days</label>
                                                             <div class="col-md-9">
-                                                                <input type="number" class="form-control" name="days" onchange="Calculate();" required>
+                                                                <input type="number" class="form-control" name="days" id="days" onchange="Calculate();" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -209,7 +212,7 @@
                                                         <div class="form-group row">
                                                             <label class="control-label text-right col-md-3">Total with Interest</label>
                                                             <div class="col-md-9">
-                                                                <input type="text" disabled class="form-control" name="tot" >
+                                                                <input type="text" disabled class="form-control" name="tot" id="tot" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -219,7 +222,7 @@
                                                         <div class="form-group row">
                                                             <label class="control-label text-right col-md-3">Daily Payment</label>
                                                             <div class="col-md-9">
-                                                                <input type="text" class="form-control" name="dpay" onchange="BackwardCalculate();">
+                                                                <input type="text" disabled class="form-control" name="dpay" id="dpay" onchange="BackwardCalculate();">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -392,8 +395,127 @@
             <!-- ============================================================== -->
         </div>
 
-    </body>
+    <script>
+    $(document).ready(function() {
+        var str_user_ty_required = "Please select a User Type";
 
+        var str_amount_required = "Please enter your Loan Amount";
+        var str_amount_regx = "Please enter a valid Loan Amount";
+
+        var str_days_required = "Please enter loan period in Days, Eg: 21";
+        var str_days_regx = "Please enter a valid number, Eg: 60";
+
+        var str_rate_required = "Please enter Interest Rate Eg: 15.6";
+        var str_rate_regx = "Enter a valid rate without % sign, Eg: 15.6";
+
+        //--form validation code begin--[PF]
+        var str_validatorAddMethod_regx = "Please enter a valid value.";
+        $.validator.addMethod("regx", function(value, element, regexpr) {    
+            var re = new RegExp(regexpr);     
+            return this.optional(element) || re.test(value);
+        }, str_validatorAddMethod_regx);
+
+        $("#loan_details").validate({    
+            rules: {
+                amount: {
+                    required: true, 
+                    regx: /^[0-9.]+$/
+                },
+                days: {
+                    required: true, 
+                    regx: /^[0-9]+$/
+                },
+                rate: {
+                    required: true, 
+                    regx: /^[0-9.]+$/
+                }                                
+            },
+            messages: {
+                amount: {
+                    required: str_amount_required,
+                    regx: str_amount_regx
+                },
+                days: {
+                    required: str_days_required,
+                    regx: str_days_regx
+                },
+                rate: {
+                    required: str_rate_required,
+                    regx: str_rate_regx
+                }                
+            },
+            validClass: "success",
+            errorPlacement: function(error, element) {
+                //console.log(element.attr('id')+' '+element.closest('div').attr('class'));
+                if( element.closest('div').is('[class^="input-group"]') ) {
+                    //to check one particular element, you'd use .is(), not hasClass:
+
+                    //otherwise bootsrap labels break when on displaying validation error
+                    error.insertAfter(element.closest('div'));
+                }
+                else {
+                    error.insertAfter(element);
+                }
+            },
+            invalidHandler: function(event, validator) {
+                //Callback for custom code when an invalid form is submitted. 
+
+                var errors = validator.numberOfInvalids(); //number of errors
+                console.log('errors: ' + errors);
+
+                for (var i=0;i<validator.errorList.length;i++){
+                    console.log(validator.errorList[i]);
+                } 
+
+                for (var i in validator.errorMap) {
+                    console.log(i, ":", validator.errorMap[i]);
+                }                                          
+            }
+        }); 
+
+        //these edits are important for form validation to works nicely--[PF]
+        $("#user_regform input, #user_regform select").focus(function() {
+            //checkboxes also includes if any
+            var enteredValue = $(this).val();
+            console.log($(this).attr('id') +' [focused] val: '+enteredValue+' class: '+$(this).attr('class'));
+
+            //removing success class when no valid value (Choose.. OR selectedIndex is 0) selected in a dropdown (on focus of dropdown menu)
+            if( ($(this)[0].selectedIndex == 0) && $(this).hasClass('success')) {
+                $(this).removeClass('success');
+            }  
+        });
+
+        //these edits are important for form validation to works nicely--[PF]
+        $("#user_regform input, #user_regform select").blur(function() {
+            //checkboxes also includes
+            var enteredValue = $(this).val();
+            console.log($(this).attr('id') +' [blured] val: '+enteredValue +' class: '+$(this).attr('class'));
+            
+            if( (enteredValue == null || enteredValue == "") && $(this).hasClass('success')) {
+                $(this).removeClass('success');
+            }
+
+            if( ($(this)[0].selectedIndex == 0) && $(this).hasClass('success')) {
+                $(this).removeClass('success');
+            }                     
+        });            
+        
+        //--[PF]
+        $("#user_regform select").change(function() {
+            var enteredValue = $(this).val();
+            if( enteredValue == ""){
+                //trigger
+                $("#user_regform").validate().element( "#"+$(this).attr('id') );
+            }
+            console.log($(this).attr('id') +' [changed] val: '+enteredValue+' class: '+$(this).attr('class'));
+        }); 
+
+        //--form validation code end--[PF]                                             
+
+    });
+    
+    </script>
+    </body>
 
     <!-- Mirrored from wrappixel.com/demos/admin-templates/monster-admin/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Mar 2018 17:36:49 GMT -->
 </html>
