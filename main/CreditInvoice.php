@@ -163,6 +163,9 @@
                                                             <label class="control-label text-right col-md-3">Collection Area</label>
                                                             <div class="col-md-9">
                                                                 <select class="form-control custom-select" data-placeholder="Choose a Area" tabindex="1" name="area">
+
+                                                                <option value="">-- select area --</option>
+
                                                                     <?php
                                                                     $sql = mysqli_query($con, "SELECT * FROM collectionarea");
                                                                     while ($result = mysqli_fetch_array($sql)) {
