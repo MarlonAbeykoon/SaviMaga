@@ -399,8 +399,11 @@
         var str_amount_required = "Please enter your Loan Amount";
         var str_amount_regx = "Please enter a valid Loan Amount";
 
-        var str_days_required = "Please enter loan period in Days";
-        var str_days_regx = "Please enter a valid number";
+        var str_days_required = "Please enter loan period in Days, Eg: 21";
+        var str_days_regx = "Please enter a valid number, Eg: 60";
+
+        var str_rate_required = "Please enter Interest Rate Eg: 15.6";
+        var str_rate_regx = "Enter a valid rate without % sign, Eg: 15.6";
 
         //--form validation code begin--[PF]
         var str_validatorAddMethod_regx = "Please enter a valid value.";
@@ -418,7 +421,11 @@
                 days: {
                     required: true, 
                     regx: /^[0-9]+$/
-                }                
+                },
+                rate: {
+                    required: true, 
+                    regx: /^[0-9.]+$/
+                }                                
             },
             messages: {
                 amount: {
@@ -428,7 +435,11 @@
                 days: {
                     required: str_days_required,
                     regx: str_days_regx
-                }
+                },
+                rate: {
+                    required: str_rate_required,
+                    regx: str_rate_regx
+                }                
             },
             validClass: "success",
             errorPlacement: function(error, element) {
