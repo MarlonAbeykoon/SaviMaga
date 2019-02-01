@@ -138,7 +138,7 @@
                                                             <div class="col-md-9">
                                                                 <select class="form-control custom-select" data-placeholder="Choose a Applicant" tabindex="1" name="extApplicant">
 
-                                                                <option value="">Select Customer</option>
+                                                                <option value="">-- select customer --</option>
                                                                     <?php
                                                                     $sql = mysqli_query($con, "SELECT debitors.idDebitors,debitors.Fname,debitors.NIC FROM debitors");
                                                                     while ($result = mysqli_fetch_array($sql)) {
