@@ -120,7 +120,7 @@ if ($id == '0') {
 
     <div class="col-md-9">
 
-        <input type="text" class="form-control" name="email" placeholder="abc@abc.com" required="" data-validation-required-message="This field is required" aria-invalid="false">
+        <input type="text" class="form-control" name="email" placeholder="Email Address" required="" data-validation-required-message="This field is required" aria-invalid="false">
 
         <small class="form-control-feedback"></small> </div>
 
