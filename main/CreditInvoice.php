@@ -399,6 +399,9 @@
         var str_amount_required = "Please enter your Loan Amount";
         var str_amount_regx = "Please enter a valid Loan Amount";
 
+        var str_days_required = "Please enter loan period in Days";
+        var str_days_regx = "Please enter a valid number";
+
         //--form validation code begin--[PF]
         var str_validatorAddMethod_regx = "Please enter a valid value.";
         $.validator.addMethod("regx", function(value, element, regexpr) {    
@@ -410,13 +413,21 @@
             rules: {
                 amount: {
                     required: true, 
-                    regx:/^[0-9.]+$/
-                }
+                    regx: /^[0-9.]+$/
+                },
+                days: {
+                    required: true, 
+                    regx: /^[0-9]+$/
+                }                
             },
             messages: {
                 amount: {
                     required: str_amount_required,
                     regx: str_amount_regx
+                },
+                days: {
+                    required: str_days_required,
+                    regx: str_days_regx
                 }
             },
             validClass: "success",
