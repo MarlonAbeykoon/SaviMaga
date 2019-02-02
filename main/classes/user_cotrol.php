@@ -19,7 +19,7 @@ class user_function {
 
     public function user_reg($fname, $lname, $path, $uname, $pass, $utype, $address, $pno) {
 
-        $query = "INSERT INTO `user_details` ( `Fname`, `Lname`, `Path`, `Status`) VALUES ( '$fname', '$lname', '$path', '1')";
+        $query = "INSERT INTO `user_details` ( `Fname`, `Lname`, `Path`,`address` , `pno` ,`Status`) VALUES ( '$fname', '$lname', '$path', '$address', '$pno','1')";
 
         $query_ex = mysqli_query($this->con, $query);
 
