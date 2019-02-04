@@ -329,7 +329,15 @@ if(isset($_POST['debitor_reg'])){
         var str_inputAddress2_minlength_tamil = "சரியான முகவரி வரி 2 ஐ உள்ளிடுக";
         var str_inputAddress2_maxlength_tamil = "உங்கள் முகவரி வரி 2 மிக நீளமாக உள்ளது!";
 
+        var str_phone1_required_sinhala = "කරුණාකර ඔබගේ දුරකථන අංකය ඇතුළත් කරන්න";
+        var str_phone1_minlength_sinhala = "ඔබගේ දුරකථන අංකයේ ඉලක්කන් අඩුය";
+        var str_phone1_maxlength_sinhala = "ඔබේ අංකය දිග වැඩිය";
+        var str_phone1_regx_sinhala = "කරුණාකර වලංගු දුරකථන අංකය ඇතුලත් කරන්න";
 
+        var str_phone1_required_tamil = "உங்கள் தொடர்பு எண்ணை அளிக்கவும்";
+        var str_phone1_minlength_tamil = "உங்கள் தொலைபேசி எண் மிகவும் குறுகியதாக உள்ளது";
+        var str_phone1_maxlength_tamil = "உங்கள் எண் மிக நீளமாக உள்ளது";
+        var str_phone1_regx_tamil = "சரியான தொலைபேசி எண்ணை உள்ளிடுக";
 
 
         $(document).ready(function() {
@@ -564,6 +572,14 @@ if(isset($_POST['debitor_reg'])){
                         }
                     });   
 
+                    $('#deb_regform input[name="phno1"]').rules('add', {
+                        messages: {
+                            required: str_phone1_required_sinhala, 
+                            minlength: str_phone1_minlength_sinhala,
+                            maxlength: str_phone1_maxlength_sinhala,
+                            regx: str_phone1_regx_sinhala
+                        }
+                    }); 
                                                                                                      
                  }
                 else if (this.value == 'tamil') {
@@ -612,7 +628,14 @@ if(isset($_POST['debitor_reg'])){
                         }
                     }); 
                     
-
+                    $('#deb_regform input[name="phno1"]').rules('add', {
+                        messages: {
+                            required: str_phone1_required_tamil, 
+                            minlength: str_phone1_minlength_tamil,
+                            maxlength: str_phone1_maxlength_tamil,
+                            regx: str_phone1_regx_tamil
+                        }
+                    }); 
 
                 }
                 else {
@@ -630,7 +653,7 @@ if(isset($_POST['debitor_reg'])){
                     console.log( $(this).attr('id') );
                 });
                 */
-            });g
+            });
 
         });
 
