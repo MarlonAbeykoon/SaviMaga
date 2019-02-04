@@ -80,6 +80,23 @@ if(isset($_POST['debitor_reg'])){
                                 <h4 class="card-title">Customer Registration</h4>
                                 <h6 class="card-subtitle"></h6>
 
+                                <div class="lang_select_btn" id="lang_select_btn">
+                                    <fieldset style="float:right">
+                                        <!--<legend></legend>-->
+                                        <div>
+                                            <label id="lang_select1" class="lang_select_btn_label selected">En
+                                                <input name="lang_select" id="english" type="radio" value="english" checked />
+                                            </label>
+                                            <label id="lang_select2" class="lang_select_btn_label">සිං
+                                                <input name="lang_select" id="sinhala" type="radio" value="sinhala" />
+                                            </label>
+                                            <label id="lang_select3" class="lang_select_btn_label">த
+                                                <input name="lang_select" id="tamil" type="radio" value="tamil" />
+                                            </label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
                                 <form class="form p-t-20" id="deb_regform" name="deb_regform" action="Controller/debitorControl.php" method="POST">
 
                                     <input type="hidden" name="frontend_testing" value=0> <!--value should set to 0 in production :Prince-->
@@ -232,38 +249,52 @@ if(isset($_POST['debitor_reg'])){
     </div>
    
     <script>
+        //global variables
+        var selectedLang = 'english';
+
+        var str_inputNIC_required = "Please enter your National ID Card number";
+        var str_inputNIC_minlength = "Your National ID card number consists of at least 9 characters";
+        var str_inputNIC_regx = "For example: 850961188v or 198509601188";
+
+        var str_inputNameF_required = "Please enter your First Name";
+        var str_inputNameF_minlength = "Please enter a valid First Name";
+        var str_inputNameF_maxlength = "Your First Name seems too long!";
+        var str_inputNameF_regx = "Please enter valid characters";
+
+        var str_inputNameL_required = "Please enter a valid Last Name";
+        var str_inputNameL_minlength = "Please enter your correct Last Name";
+        var str_inputNameL_maxlength = "Your Last Name seems too long!"; 
+        var str_inputNameL_regx = "Please enter valid characters";
+
+        var str_inputAddress1_required = "Please enter your Address Line 1";
+        var str_inputAddress1_minlength = "Please enter a valid Address Line 1";
+        var str_inputAddress1_maxlength = "Your Address Line 1 seems too long!";
+
+        var str_inputAddress2_required = "Please enter your Address Line 2";
+        var str_inputAddress2_minlength = "Please enter a valid Address Line 2";
+        var str_inputAddress2_maxlength = "Your Address Line 2 seems too long!";
+
+        var str_phone1_required = "Please enter a your Phone number";
+        var str_phone1_minlength = "Your Phone number is too short";
+        var str_phone1_maxlength = "Your number is too long to be valid";
+        var str_phone1_regx = "Please enter a valid Phone number";
+
+        var str_phone2_required = "Please enter a your Phone number";
+        var str_phone2_minlength = "Your Phone number is too short";
+        var str_phone2_maxlength = "Your number is too long to be valid";
+        var str_phone2_regx = "Please enter a valid Phone number";  
+
+
+        var str_inputNIC_required_sinhala = "කරුණාකර ඔබගේ ජාතික හැදුනුම්පත් අ. ඇතුලත් කරන්න";
+        var str_inputNIC_minlength_sinhala = "ඔබගේ ජාතික හැදුනුම්පත් අංකය සදහා අවම වශයෙන් ඉල්ලක්කම් 9ක් ඇත";
+        var str_inputNIC_regx_sinhala = "උදාහරනයක් වශයෙන්: 850961188v හෝ 198509601188";
+
+        var str_inputNIC_required_tamil = "உங்கள் தேசிய அடையாள அட்டை எண்ணை உள்ளிடவும்";
+        var str_inputNIC_minlength_tamil = "உங்கள் தேசிய அடையாள அட்டையில் 9 கடிதங்கள் உள்ளன";
+        var str_inputNIC_regx_tamil = "உதாரணமாக: 850961188v அல்லது 198509601188";
+
+
         $(document).ready(function() {
-            var str_inputNIC_required = "Please enter your National ID Card number";
-            var str_inputNIC_minlength = "Your National ID card number consists of at least 9 characters";
-            var str_inputNIC_regx = "For example: 850961188v or 198509601188";
-
-            var str_inputNameF_required = "Please enter your First Name";
-            var str_inputNameF_minlength = "Please enter a valid First Name";
-            var str_inputNameF_maxlength = "Your First Name seems too long!";
-            var str_inputNameF_regx = "Please enter valid characters";
-
-            var str_inputNameL_required = "Please enter a valid Last Name";
-            var str_inputNameL_minlength = "Please enter your correct Last Name";
-            var str_inputNameL_maxlength = "Your Last Name seems too long!"; 
-            var str_inputNameL_regx = "Please enter valid characters";
-
-            var str_inputAddress1_required = "Please enter your Address Line 1";
-            var str_inputAddress1_minlength = "Please enter a valid Address Line 1";
-            var str_inputAddress1_maxlength = "Your Address Line 1 seems too long!";
-
-            var str_inputAddress2_required = "Please enter your Address Line 2";
-            var str_inputAddress2_minlength = "Please enter a valid Address Line 2";
-            var str_inputAddress2_maxlength = "Your Address Line 2 seems too long!";
-
-            var str_phone1_required = "Please enter a your Phone number";
-            var str_phone1_minlength = "Your Phone number is too short";
-            var str_phone1_maxlength = "Your number is too long to be valid";
-            var str_phone1_regx = "Please enter a valid Phone number";
-
-            var str_phone2_required = "Please enter a your Phone number";
-            var str_phone2_minlength = "Your Phone number is too short";
-            var str_phone2_maxlength = "Your number is too long to be valid";
-            var str_phone2_regx = "Please enter a valid Phone number";
 
             //--form validation code begin--[PF]
             var str_validatorAddMethod_regx = "Please enter a valid value.";
@@ -413,7 +444,9 @@ if(isset($_POST['debitor_reg'])){
 
                 if( ($(this)[0].selectedIndex == 0) && $(this).hasClass('success')) {
                     $(this).removeClass('success');
-                }                     
+                }
+
+                               
             });            
             
             //--[PF]
@@ -423,6 +456,70 @@ if(isset($_POST['debitor_reg'])){
             }); 
 
             //--form validation code end--[PF]
+
+            $('input[type=radio][name=lang_select]').change(function() {
+                console.log('selectedLang (before): '+selectedLang);
+                console.log( $(this).attr('id') );
+                $("#lang_select1").removeClass('selected');
+                $("#lang_select2").removeClass('selected');
+                $("#lang_select3").removeClass('selected');
+
+                var selId = $(this).parent().prop('id'); //lang_select1
+
+                if (this.value == 'english') {
+                    $("#"+selId).addClass('selected');
+                    selectedLang = this.value;
+                    
+                    $('#deb_regform input[name="nic"]').rules('add', {
+                        messages: {
+                            required: str_inputNIC_required,
+                            minlength: str_inputNIC_minlength,
+                            regx: str_inputNIC_regx
+                        }
+                    }); 
+                   // $("#deb_regform").validate().element( 'input[name="nic"]');                
+
+                }
+                else if (this.value == 'sinhala') {
+                    $("#"+selId).addClass('selected');
+                    selectedLang = this.value;
+
+                    $('#deb_regform input[name="nic"]').rules('add', {
+                        messages: {
+                            required: str_inputNIC_required_sinhala,
+                            minlength: str_inputNIC_minlength_sinhala,
+                            regx: str_inputNIC_regx_sinhala
+                        }
+                    });    
+                 }
+                else if (this.value == 'tamil') {
+                    $("#"+selId).addClass('selected');
+                    selectedLang = this.value;
+
+                    $('#deb_regform input[name="nic"]').rules('add', {
+                        messages: {
+                            required: str_inputNIC_required_tamil,
+                            minlength: str_inputNIC_minlength_tamil,
+                            regx: str_inputNIC_regx_tamil
+                        }
+                    });                     
+                }
+                else {
+                }
+
+                //$("#deb_regform").validate();
+
+                console.log('selectedLang (now): '+selectedLang);
+                
+                //console.log( $('#lang_select_btn').data('selected_lang') );
+                //console.log( $(this).parent().get( 0 ).tagName );
+                //console.log( $(this).parent().prop('className') );
+                /*
+                $('#lang_select_btn').find('.lang_select_btn_label').each(function() {
+                    console.log( $(this).attr('id') );
+                });
+                */
+            });
 
         });
 
