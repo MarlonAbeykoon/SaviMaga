@@ -293,6 +293,15 @@ if(isset($_POST['debitor_reg'])){
         var str_inputNIC_minlength_tamil = "உங்கள் தேசிய அடையாள அட்டையில் 9 கடிதங்கள் உள்ளன";
         var str_inputNIC_regx_tamil = "உதாரணமாக: 850961188v அல்லது 198509601188";
 
+        var str_inputNameF_required_sinhala = "කරුණාකර ඔබගේ පළමු නම ඇතුලත් කරන්න";
+        var str_inputNameF_minlength_sinhala = "කරුණාකර වලංගු පළමු නමක් ඇතුළත් කරන්න";
+        var str_inputNameF_maxlength_sinhala = "ඔබේ පළමු නම දිග වැඩියි!";
+        var str_inputNameF_regx_sinhala = "කරුණාකර වලංගු අක්ෂර ඇතුලත් කරන්න";
+
+        var str_inputNameF_required_tamil = "உங்கள் முதல் பெயரை உள்ளிடவும்";
+        var str_inputNameF_minlength_tamil = "செல்லுபடியாகும் முதல் பெயரை உள்ளிடுக";
+        var str_inputNameF_maxlength_tamil = "உங்கள் முதல் பெயர் மிக நீண்டதாக தோன்றுகிறது!";
+        var str_inputNameF_regx_tamil = "சரியான எழுத்துக்களை உள்ளிடுக";
 
         $(document).ready(function() {
 
@@ -490,7 +499,16 @@ if(isset($_POST['debitor_reg'])){
                             minlength: str_inputNIC_minlength_sinhala,
                             regx: str_inputNIC_regx_sinhala
                         }
-                    });    
+                    }); 
+
+                    $('#deb_regform input[name="fname"]').rules('add', {
+                        messages: {
+                            required: str_inputNameF_required_sinhala,
+                            minlength: str_inputNameF_minlength_sinhala,
+                            maxlength: str_inputNameF_maxlength_sinhala,
+                            regx: str_inputNameF_regx_sinhala
+                        }
+                    });                        
                  }
                 else if (this.value == 'tamil') {
                     $("#"+selId).addClass('selected');
@@ -502,7 +520,16 @@ if(isset($_POST['debitor_reg'])){
                             minlength: str_inputNIC_minlength_tamil,
                             regx: str_inputNIC_regx_tamil
                         }
-                    });                     
+                    }); 
+
+                    $('#deb_regform input[name="fname"]').rules('add', {
+                        messages: {
+                            required: str_inputNameF_required_tamil,
+                            minlength: str_inputNameF_minlength_tamil,
+                            maxlength: str_inputNameF_maxlength_tamil,
+                            regx: str_inputNameF_regx_tamil
+                        }
+                    });                   
                 }
                 else {
                 }
