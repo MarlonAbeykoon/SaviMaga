@@ -308,10 +308,28 @@ if(isset($_POST['debitor_reg'])){
         var str_inputNameL_maxlength_sinhala = "ඔබේ අවසාන නම දිග වැඩියි!"; 
         var str_inputNameL_regx_sinhala = "කරුණාකර වලංගු අක්ෂර ඇතුලත් කරන්න";
 
-        var str_inputNameL_required_tamil = "Please enter a valid Last Name";
+        var str_inputNameL_required_tamil = "சரியான கடைசி பெயரை உள்ளிடுக";
         var str_inputNameL_minlength_tamil = "கடைசி கடைசி பெயரை உள்ளிடவும்"; 
         var str_inputNameL_maxlength_tamil = "உங்கள் கடைசி பெயர் நீண்டது"; 
         var str_inputNameL_regx_tamil = "சரியான எழுத்துக்களை உள்ளிடுக";        
+
+        var str_inputAddress1_required_sinhala = "කරුණාකර ඔබේ ලිපින පේළිය 1 ඇතුලත් කරන්න";
+        var str_inputAddress1_minlength_sinhala = "කරුණාකර වලංගු ලිපින පේළිය 1 ඇතුලත් කරන්න";
+        var str_inputAddress1_maxlength_sinhala = "ඔබේ ලිපින පේළිය 1 දිග වැඩියි!";
+
+        var str_inputAddress1_required_tamil = "உங்கள் முகவரி வரி 1 ஐ உள்ளிடவும்";
+        var str_inputAddress1_minlength_tamil = "சரியான முகவரி வரி 1 ஐ உள்ளிடுக";
+        var str_inputAddress1_maxlength_tamil = "உங்கள் முகவரி வரி 1 மிக நீளமாக உள்ளது!";
+
+        var str_inputAddress2_required_sinhala = "කරුණාකර ඔබේ ලිපින පේළිය 2 ඇතුලත් කරන්න";
+        var str_inputAddress2_minlength_sinhala = "කරුණාකර වලංගු ලිපින පේළිය 2 ඇතුලත් කරන්න";
+        var str_inputAddress2_maxlength_sinhala = "ඔබේ ලිපින පේළිය 2 දිග වැඩියි!";
+
+        var str_inputAddress2_required_tamil = "உங்கள் முகவரி வரி 2 ஐ உள்ளிடவும்";
+        var str_inputAddress2_minlength_tamil = "சரியான முகவரி வரி 2 ஐ உள்ளிடுக";
+        var str_inputAddress2_maxlength_tamil = "உங்கள் முகவரி வரி 2 மிக நீளமாக உள்ளது!";
+
+
 
 
         $(document).ready(function() {
@@ -528,7 +546,25 @@ if(isset($_POST['debitor_reg'])){
                             maxlength: str_inputNameL_maxlength_sinhala,
                             regx: str_inputNameL_regx_sinhala
                         }
-                    });                                            
+                    }); 
+
+                    $('#deb_regform input[name="address1"]').rules('add', {
+                        messages: {
+                            required: str_inputAddress1_required_sinhala,
+                            minlength: str_inputAddress1_minlength_sinhala,
+                            maxlength: str_inputAddress1_maxlength_sinhala
+                        }
+                    });
+
+                    $('#deb_regform input[name="address2"]').rules('add', {
+                        messages: {
+                            required: str_inputAddress2_required_sinhala,
+                            minlength: str_inputAddress2_minlength_sinhala,
+                            maxlength: str_inputAddress2_maxlength_sinhala
+                        }
+                    });   
+
+                                                                                                     
                  }
                 else if (this.value == 'tamil') {
                     $("#"+selId).addClass('selected');
@@ -558,7 +594,26 @@ if(isset($_POST['debitor_reg'])){
                             maxlength: str_inputNameL_maxlength_tamil,
                             regx: str_inputNameL_regx_tamil
                         }
-                    });                                       
+                    });
+
+                    $('#deb_regform input[name="address1"]').rules('add', {
+                        messages: {
+                            required: str_inputAddress1_required_tamil,
+                            minlength: str_inputAddress1_minlength_tamil,
+                            maxlength: str_inputAddress1_maxlength_tamil
+                        }
+                    });
+
+                    $('#deb_regform input[name="address2"]').rules('add', {
+                        messages: {
+                            required: str_inputAddress2_required_tamil,
+                            minlength: str_inputAddress2_minlength_tamil,
+                            maxlength: str_inputAddress2_maxlength_tamil
+                        }
+                    }); 
+                    
+
+
                 }
                 else {
                 }
@@ -575,7 +630,7 @@ if(isset($_POST['debitor_reg'])){
                     console.log( $(this).attr('id') );
                 });
                 */
-            });
+            });g
 
         });
 
