@@ -339,6 +339,15 @@ if(isset($_POST['debitor_reg'])){
         var str_phone1_maxlength_tamil = "உங்கள் எண் மிக நீளமாக உள்ளது";
         var str_phone1_regx_tamil = "சரியான தொலைபேசி எண்ணை உள்ளிடுக";
 
+        var str_phone2_required_sinhala = "කරුණාකර ඔබගේ දුරකථන අංකය ඇතුළත් කරන්න";
+        var str_phone2_minlength_sinhala = "ඔබගේ දුරකථන අංකයේ ඉලක්කන් අඩුය";
+        var str_phone2_maxlength_sinhala = "ඔබේ අංකය දිග වැඩිය";
+        var str_phone2_regx_sinhala = "කරුණාකර වලංගු දුරකථන අංකය ඇතුලත් කරන්න";
+
+        var str_phone2_required_tamil = "உங்கள் தொடர்பு எண்ணை அளிக்கவும்";
+        var str_phone2_minlength_tamil = "உங்கள் தொலைபேசி எண் மிகவும் குறுகியதாக உள்ளது";
+        var str_phone2_maxlength_tamil = "உங்கள் எண் மிக நீளமாக உள்ளது";
+        var str_phone2_regx_tamil = "சரியான தொலைபேசி எண்ணை உள்ளிடுக";
 
         $(document).ready(function() {
 
@@ -580,7 +589,14 @@ if(isset($_POST['debitor_reg'])){
                             regx: str_phone1_regx_sinhala
                         }
                     }); 
-                                                                                                     
+
+                    $('#deb_regform input[name="phno2"]').rules('add', {
+                        messages: {
+                            minlength: str_phone2_minlength_sinhala,
+                            maxlength: str_phone2_maxlength_sinhala,
+                            regx: str_phone2_regx_sinhala
+                        }
+                    });                                                                                                      
                  }
                 else if (this.value == 'tamil') {
                     $("#"+selId).addClass('selected');
@@ -637,6 +653,13 @@ if(isset($_POST['debitor_reg'])){
                         }
                     }); 
 
+                    $('#deb_regform input[name="phno2"]').rules('add', {
+                        messages: {
+                            minlength: str_phone2_minlength_tamil,
+                            maxlength: str_phone2_maxlength_tamil,
+                            regx: str_phone2_regx_tamil
+                        }
+                    }); 
                 }
                 else {
                 }
