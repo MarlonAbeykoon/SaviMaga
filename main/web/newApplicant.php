@@ -58,7 +58,7 @@ if ($id == '0') {
 
                 <div class="col-md-9">
 
-                    <input type="text" class="form-control" name="firstName" placeholder="John" required pattern="^[A-Za-z -]+$">
+                    <input type="text" class="form-control" name="firstName" placeholder="First Name" required pattern="^[A-Za-z -]+$">
 
                     <small class="form-control-feedback"></small> </div>
 
@@ -76,7 +76,7 @@ if ($id == '0') {
 
                 <div class="col-md-9">
 
-                    <input type="text" class="form-control" name="lastName" placeholder="doe" required pattern="^[A-Za-z -]+$">
+                    <input type="text" class="form-control" name="lastName" placeholder="Last Name" required pattern="^[A-Za-z -]+$">
 
                     <small class="form-control-feedback"></small> </div>
 
@@ -120,7 +120,7 @@ if ($id == '0') {
 
     <div class="col-md-9">
 
-        <input type="text" class="form-control" name="email" placeholder="abc@abc.com" required="" data-validation-required-message="This field is required" aria-invalid="false">
+        <input type="text" class="form-control" name="email" placeholder="Email Address" required="" data-validation-required-message="This field is required" aria-invalid="false">
 
         <small class="form-control-feedback"></small> </div>
 
@@ -134,11 +134,11 @@ if ($id == '0') {
 
             <div class="form-group row">
 
-                <label class="control-label text-right col-md-3">NIC No</label>
+                <label class="control-label text-right col-md-3">NIC No.</label>
 
                 <div class="col-md-9">
 
-                    <input type="text" class="form-control" name="nic" placeholder="123456789V" required>
+                    <input type="text" class="form-control" name="nic" placeholder="ID Card No." required>
 
                     <small class="form-control-feedback"></small> </div>
 
@@ -156,11 +156,11 @@ if ($id == '0') {
 
             <div class="form-group row">
 
-                <label class="control-label text-right col-md-3">Phone No1</label>
+                <label class="control-label text-right col-md-3">Phone No 1</label>
 
                 <div class="col-md-9">
 
-                    <input type="text" class="form-control" name="phone1" placeholder="123456789" required pattern="[0-9]{10}" title="10 Digit Phone No">
+                    <input type="text" class="form-control" name="phone1" placeholder="Phone 1" required pattern="[0-9]{10}" title="10 Digit Phone No">
 
                     <small class="form-control-feedback"></small> </div>
 
@@ -174,11 +174,11 @@ if ($id == '0') {
 
             <div class="form-group row">
 
-                <label class="control-label text-right col-md-3">Phone No2</label>
+                <label class="control-label text-right col-md-3">Phone No 2</label>
 
                 <div class="col-md-9">
 
-                    <input type="text" class="form-control" name="phone2" placeholder="123456789" pattern="[0-9]{10}" title="10 Digit Phone No">
+                    <input type="text" class="form-control" name="phone2" placeholder="Phone 2" pattern="[0-9]{10}" title="10 Digit Phone No">
 
                     <small class="form-control-feedback"></small> </div>
 

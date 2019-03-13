@@ -70,6 +70,7 @@
                                                                 <tr>
                                                                     <th>NIC</th>
                                                                     <th>Name</th>
+                                                                    <th>Loan Type</th>
                                                                     <th>Applied Amount</th>
                                                                     <th>Applied Date</th>
                                                                     <th></th>
@@ -87,7 +88,8 @@
                                                             credit_invoice.DailyEqualPayment,
                                                             credit_invoice.Days,
                                                             credit_invoice.DateTime,
-                                                            credit_invoice.InterestRate
+                                                            credit_invoice.InterestRate,
+                                                            credit_invoice.type
                                                             FROM
                                                             credit_invoice
                                                             INNER JOIN debitors ON credit_invoice.Debitors_idDebitors = debitors.idDebitors
@@ -104,6 +106,7 @@
                                                                     <tr>
                                                                         <td><?php echo $result['NIC']; ?></td>
                                                                         <td><?php echo $result['Fname']; ?></td>
+                                                                        <td><?php echo $result['type']; ?></td>
                                                                         <td><?php echo $result['TotalAmount']; ?></td>
                                                                         <td><?php echo $date->format("Y-m-d"); ?></td>
                                                                         <td> 

@@ -12,7 +12,7 @@
         <meta name="author" content="">
         <!-- Favicon icon -->
         <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-        <title>eDebtor</title>
+        <title>Savimaga</title>
         <!-- Bootstrap Core CSS -->
         <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- chartist CSS -->
@@ -176,7 +176,7 @@ invoice_payments.DateTime like '$year%'");
                                         
 //                           -------------------------yearly income------------------------------                                         
                                         ?>
-                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> Rs.<?php echo $todayProfit; ?></h2>
+                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> Rs.<?php echo round($todayProfit,2); ?></h2>
                                         <span class="text-muted">Todays Income</span>
                                     </div>
                                   <!--   <span class="text-success"><?php echo round(($todayProfit/$weekProfit)*100,2); ?>%</span> -->
@@ -194,12 +194,12 @@ invoice_payments.DateTime like '$year%'");
                                 <div class="card-body">
                                     <h4 class="card-title">Weekly Collect</h4>
                                     <div class="text-right">
-                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i> Rs.<?php echo $weekProfit; ?></h2>
+                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i> Rs.<?php echo round($weekProfit,2); ?></h2>
                                         <span class="text-muted">Weekly Income</span>
                                     </div>
                                     <span class="text-info"><?php echo round(($weekProfit/$monthProfit)*100,2); ?>%</span>
                                     <div class="progress">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo round(($weekProfit/$monthProfit)*100,2); ?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 100px; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +211,7 @@ invoice_payments.DateTime like '$year%'");
                                 <div class="card-body">
                                     <h4 class="card-title">Monthly Collect</h4>
                                     <div class="text-right">
-                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-purple"></i> Rs.<?php echo $monthProfit; ?></h2>
+                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-purple"></i> Rs.<?php echo round($monthProfit,2); ?></h2>
                                         <span class="text-muted">Monthly Income</span>
                                     </div>
                                     <span class="text-purple"><?php echo round(($monthProfit/$yearProfit)*100,2); ?>%</span>
@@ -228,7 +228,7 @@ invoice_payments.DateTime like '$year%'");
                                 <div class="card-body">
                                     <h4 class="card-title">Yearly Collect</h4>
                                     <div class="text-right">
-                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-danger"></i> Rs.<?php echo $yearProfit; ?></h2>
+                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-danger"></i> Rs.<?php echo round($yearProfit,2); ?></h2>
                                         <span class="text-muted">Todays Income</span>
                                     </div>
                                     <span class="text-danger">100%</span>
@@ -252,7 +252,7 @@ invoice_payments.DateTime like '$year%'");
                                             <div class="d-flex flex-wrap">
                                                 <div>
                                                     <h3>Revenue Statistics</h3>
-                                                    <h6 class="card-subtitle">2018</h6> </div>
+                                                    <h6 class="card-subtitle">2019</h6> </div>
                                                 <div class="ml-auto ">
                                                     <ul class="list-inline">
                                                         <li>
@@ -315,7 +315,7 @@ invoice_payments.DateTime like '$year%'");
         <script src="js/toastr.js"></script>
 
         <script>
-            $.toast({
+         /*    $.toast({
                 heading: 'Welcome to Edebtor',
                 text: '',
                 position: 'top-right',
@@ -323,7 +323,7 @@ invoice_payments.DateTime like '$year%'");
                 icon: 'info',
                 hideAfter: 3000,
                 stack: 6
-            });
+            }); */
         </script>
         <!-- ============================================================== -->
         <!-- Style switcher -->

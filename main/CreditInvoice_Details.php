@@ -76,7 +76,7 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-body">
-                                                <h4 class="card-title">Granted Loan Details</h4>
+                                                <h4 class="card-title">Loan Details</h4>
                                                 <div class="table-responsive">
 
                                                     <div id="tableBody">
@@ -86,6 +86,7 @@
                                                                 <tr>
                                                                     <th>NIC</th>
                                                                     <th>Name</th>
+                                                                    <th>Loan Type</th>
                                                                     <th>Repay Amount</th>
                                                                     <th>Paid</th>
                                                                     <th>Progress</th>
@@ -108,7 +109,8 @@
                                                             credit_invoice.DateTime,
                                                             credit_invoice.InterestRate,
                                                             credit_invoice.Settled,
-                                                            credit_invoice.Status
+                                                            credit_invoice.Status,
+                                                            credit_invoice.type
                                                             FROM
                                                             credit_invoice
                                                             INNER JOIN debitors ON credit_invoice.Debitors_idDebitors = debitors.idDebitors
@@ -122,6 +124,7 @@
                                                                     ?>
                                                                     <tr onclick="loadPaymentInfo(<?php echo $result['idCredit_Invoice']; ?>)">
                                                                         <td><?php echo $result['NIC']; ?></td>
+                                                                        <td><?php echo $result['type']; ?></td>
                                                                         <td><?php echo $result['Fname']; ?></td>
                                                                         <td><?php echo $result['TotalAmount']; ?></td>
                                                                         <td><?php echo $result['PaidAmount']; ?></td>

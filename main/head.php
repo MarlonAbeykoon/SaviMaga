@@ -33,7 +33,7 @@ $user_de=$_SESSION['user_de'];
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>eDebtor</title>
+    <title>Savimaga</title>
     <!-- Bootstrap Core CSS -->
     <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- chartist CSS -->
@@ -67,7 +67,61 @@ $user_de=$_SESSION['user_de'];
 
         .error.valid {
             color:rgb(103, 139, 112);
-        }        
+        } 
+
+        div.lang_select_btn fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        div.lang_select_btn legend {
+            padding: 0;
+            margin: 0;
+        }
+        div.lang_select_btn label {
+            cursor: pointer;
+            display: block;
+            float: left;
+            padding: .1em .2em;
+            background-color: #fff;
+            border-style: solid;
+            border-width: 1px 1px 1px 0;
+            border-color: #b7b7b7;
+           /* background-image: -moz-linear-gradient(rgba(255,255,255,.2), rgba(0,0,0,.2));
+            background-image: -webkit-linear-gradient(rgba(255,255,255,.2), rgba(0,0,0,.2));
+            background-image: linear-gradient(rgba(255,255,255,.2), rgba(0,0,0,.2));
+            box-shadow: 1px 1px 1px rgba(255,255,255,.2) inset, -1px -1px 1px rgba(0,0,0,.2) inset;*/
+        }
+
+        div.lang_select_btn label:first-child {
+            border-left-width: 1px;
+            border-top-left-radius: .2em;
+            border-bottom-left-radius: .2em;
+        }
+        div.lang_select_btn label:last-child {
+            border-top-right-radius: .2em;
+            border-bottom-right-radius: .2em;
+        }
+        div.lang_select_btn label.selected {
+            background-color: #00cccc;
+            color: white;
+            border-color: lightblue;
+            background-image: -moz-linear-gradient(rgba(0,0,0,.2), rgba(255,255,255,.2));
+            background-image: -webkit-linear-gradient(rgba(0,0,0,.2), rgba(255,255,255,.2));
+            background-image: linear-gradient(rgba(0,0,0,.2), rgba(255,255,255,.2));
+            box-shadow: 1px 1px 1px rgba(0,0,0,.2) inset;
+        }
+        /*
+        div.lang_select_btn label.warning.selected {
+            background-color: red;
+            border-color: darkred;
+        }*/
+        div.lang_select_btn input[type="radio"] {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
     </style>
 
 

@@ -19,14 +19,14 @@ $user_type=$_SESSION['user_type'];
         <!-- Logo -->
         <!-- ============================================================== -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" >
                 <!-- Logo icon -->
                 <b>
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                    <!-- <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" /> -->
                     <!-- Light Logo icon -->
-                    <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                   <!--  <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" /> -->
                 </b>
                 <!--End Logo icon -->
                 <!-- Logo text -->
@@ -187,7 +187,7 @@ WHERE user.idUser = $user_de");
                                     <div class="u-img"><img src="../assets/images/users/1.jpg" alt="user"></div>
                                     <div class="u-text">
                                         <h4><?php echo $pname; ?></h4>
-                                        <p class="text-muted"></p><a href="http://g5.creditlanka.com/main/" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                        <p class="text-muted"></p><a href="#" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>
