@@ -21,6 +21,7 @@ credit_invoice.DailyEqualPayment,
 credit_invoice.PaidAmount,
 credit_invoice.InterestRate,
 credit_invoice.Days,
+credit_invoice.type,
 debitors.NIC,
 debitors.Lname
 FROM
@@ -32,7 +33,7 @@ credit_invoice.`Status` = 1 AND
 credit_invoice.idCredit_Invoice = $cid
 ");
     while ($results = mysqli_fetch_array($sql)) {
-
+        $payment_type = $result['type'];
         $interestForDay = ($results['TotalAmount'] - $results['GrantAmount']) / $results['Days'];
 
         $sql2 = mysqli_query($con, "SELECT * FROM
@@ -66,10 +67,28 @@ Order by invoice_payments.DateTime Desc limit 1
         }
 
         $interestForPenalty = 0;
+        
+        if($payment_type='Daily'){
+            $payment_cat ='Days';
+            $diff_qty=1;
+        }else if($payment_type='Weekly'){
+            $payment_cat ='Weeks';
+            $diff_qty=1;
+        }else if($payment_type='Monthly'){
+            $payment_cat ='Months';
+            $diff_qty=30;
+        }
+
+        $diff_count = ($diff - 1)/$diff_qty;
         if ($diff >= 1) {
-            $interestForPenalty = $interestForDay * ($diff - 1);
+
+            
+
+
+           // $interestForPenalty = $interestForDay * ($diff - 1);
+            $interestForPenalty = $interestForDay * $diff_count;
             ?>
-            <div class="alert alert-danger alert-rounded"> <?php echo($diff - 1); ?> Days of Payments Didn't Make On time. Please Check Payment History.
+            <div class="alert alert-danger alert-rounded"> <?php echo $diff_count; ?> <?php echo $payment_cat; ?> of Payments Didn't Make On time. Please Check Payment History.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
             </div>
         <?php } ?>
@@ -183,13 +202,18 @@ Order by invoice_payments.DateTime Desc limit 1
                 <div class="form-group">
                     <label class="control-label">Paying For</label>
                     <select class="form-control custom-select" id="payFor" name="payFor" onchange="CalculatePayment();">
-                        <option value="1">1Day</option>
-                        <option value="2">2Day</option>
-                        <option value="3">3Day</option>
-                        <option value="4">4Day</option>
-                        <option value="5">5Day</option>
-                        <option value="6">6Day</option>
-                        <option value="7">7Day</option>
+                    <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                            <option value="9">9</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
                         <option value="0">Full Amount</option>
                     </select>
                 </div>
@@ -208,7 +232,7 @@ Order by invoice_payments.DateTime Desc limit 1
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label">Additional Interest Amount for delayed Payment of <?php echo($diff - 1); ?> Days</label>
+                    <label class="control-label">Additional Interest Amount for delayed Payment of <?php echo $diff_count; ?> <?php echo $payment_cat; ?></label>
                     <input type="text" id="addAmount" name="addAmount" class="form-control" placeholder="" value="<?php echo number_format($interestForPenalty, 2); ?>" oninput="CalculatePayment();">
                 </div>
             </div>
@@ -216,7 +240,7 @@ Order by invoice_payments.DateTime Desc limit 1
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label">Total Amount</label>
-                    <input type="text" id="totAmount" name="totAmount" class="form-control" placeholder="" readonly value="<?php echo ($results['DailyEqualPayment'] + number_format($interestForPenalty, 2)) ?>">
+                    <input type="text" id="totAmount" name="totAmount" class="form-control" placeholder="" readonly value="<?php echo (  number_format($results['DailyEqualPayment'] + $interestForPenalty, 2)) ?>">
                 </div>
             </div>
             <!--/span-->

@@ -62,6 +62,30 @@
                                             <tbody id="customers">
                                                 <?php
                                                 date_default_timezone_set("Asia/Colombo");
+
+                                                if($user_type == 'Admin'){
+                                                    $sql = mysqli_query($con, "SELECT
+collection_area_user.CollectionArea_idCollectionArea,
+credit_invoice.TotalAmount,
+credit_invoice.GrantAmount,
+debitors.Fname,
+debitors.Lname,
+debitors.Address1,
+debitors.Address2,
+credit_invoice.idCredit_Invoice
+FROM
+credit_invoice
+INNER JOIN collection_area_user ON credit_invoice.CollectionArea_idCollectionArea = collection_area_user.CollectionArea_idCollectionArea
+INNER JOIN debitors ON credit_invoice.Debitors_idDebitors = debitors.idDebitors
+WHERE
+
+credit_invoice.Settled = 0 AND
+credit_invoice.`Status` = 1
+ORDER BY
+credit_invoice.Debitors_idDebitors ASC");
+
+
+                                                }else{
                                                 $sql = mysqli_query($con, "SELECT
 collection_area_user.CollectionArea_idCollectionArea,
 credit_invoice.TotalAmount,
@@ -81,6 +105,7 @@ credit_invoice.Settled = 0 AND
 credit_invoice.`Status` = 1
 ORDER BY
 credit_invoice.Debitors_idDebitors ASC");
+}
                                                 $count = 1;
                                                 while ($result = mysqli_fetch_array($sql)) {
 
@@ -225,13 +250,18 @@ Order by invoice_payments.DateTime Desc limit 1
                                                     <div class="form-group">
                                                         <label class="control-label">Paying For</label>
                                                         <select class="form-control custom-select" id="payFor" >
-                                                            <option value="1">1Day</option>
-                                                            <option value="2">2Day</option>
-                                                            <option value="3">3Day</option>
-                                                            <option value="4">4Day</option>
-                                                            <option value="5">5Day</option>
-                                                            <option value="6">6Day</option>
-                                                            <option value="7">7Day</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                            <option value="9">9</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
                                                             <option value="0">Full Amount</option>
                                                         </select>
                                                     </div>
@@ -284,7 +314,7 @@ Order by invoice_payments.DateTime Desc limit 1
 
                                         </div>
                                         <div class="form-actions">
-                                            <button type="submit" class="btn btn-success" onclick="MakePayment(<?php echo $user_de; ?>);"> <i class="fa fa-check"></i> Save</button>
+                                            <button type="submit" id="payment_save" disabled class="btn btn-success" onclick="MakePayment(<?php echo $user_de; ?>);"> <i class="fa fa-check"></i> Save</button>
                                             <button type="reset" class="btn btn-inverse" onclick="loadPaymentInfo('0');">Cancel</button>
                                         </div>
                                     </form>
@@ -299,7 +329,7 @@ Order by invoice_payments.DateTime Desc limit 1
 
                         document.getElementById("preloader").style.opacity = "0.3"
                         document.getElementById("preloader").style.display = "block";
-
+                        document.getElementById("payment_save").disabled = false;
                         var dataString = 'cid=' + cid;
 
                         $.ajax({
@@ -382,10 +412,11 @@ Order by invoice_payments.DateTime Desc limit 1
 //
                                 document.getElementById("preloader").style.opacity = "0.3";
                                 document.getElementById("preloader").style.display = "block";
-
+                                var payFor = $("#payFor").val();
+                                
                                 var cid = document.getElementById('cid').value;
                                 var dailyPay = document.getElementById('dailyPay').value;
-                                var payFor = $("#payFor").val();
+                               
                                 var addAmount = document.getElementById('addAmount').value;
                                 var paidAmount = document.getElementById('paidAmount').value;
                                 var dataString = 'uid=' + uid + '&cid=' + cid + '&dailyPay=' + dailyPay + '&payFor=' + payFor + '&addAmount=' + addAmount + '&paidAmount=' + paidAmount;
@@ -444,6 +475,39 @@ Order by invoice_payments.DateTime Desc limit 1
 
     </body>
 
-
+    <script type="text/javascript">
+$(document).ready(function() {
+    /* $('#form').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            payFor: {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required and cannot be empty'
+                    },
+                    
+                    
+                }
+            },
+            dpay: {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required and cannot be empty'
+                    },
+                    
+                    
+                }
+            }
+          
+           
+        }
+    }); */
+});
+</script>
     <!-- Mirrored from wrappixel.com/demos/admin-templates/monster-admin/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Mar 2018 17:36:49 GMT -->
 </html>

@@ -38,21 +38,21 @@
             var interest = ((amount / 100) * rate);
 
 
-            if(loan_type == 'daily'){
+            if(loan_type == 'Daily'){
                 var dailyPay = (parseFloat((interest / 30) * days) + parseFloat(amount)) / days;
             var tot = dailyPay * days;
             document.getElementsByName("dpay")[0].value = dailyPay.toFixed(2);
             document.getElementsByName("tot")[0].value = tot.toFixed(2);
             }
 
-            if(loan_type == 'weekly'){
+            if(loan_type == 'Weekly'){
                 var dailyPay = (parseFloat((interest / 30) * days) + parseFloat(amount)) / days;
             var tot = dailyPay * days;
             document.getElementsByName("dpay")[0].value = dailyPay.toFixed(2);
             document.getElementsByName("tot")[0].value = tot.toFixed(2);
             }
 
-            if(loan_type == 'monthly'){
+            if(loan_type == 'Monthly'){
                 var dailyPay = (parseFloat((interest / 30) * days) + parseFloat(amount)) / days;
             var tot = dailyPay * days;
             document.getElementsByName("dpay")[0].value = dailyPay.toFixed(2);
@@ -132,22 +132,22 @@
                                     <h4 class="card-title">Loan Application</h4>
                                     <div class="form-group row p-t-20">
                                         <div class="col-sm-4">
-                                            <div class="m-b-10">
+                                             <div class="m-b-10">
                                                 <div class="custom-control custom-radio">
                                                     <label>
                                                         <input id="Applicant1" name="radio" value="0" type="radio" class="custom-control-input" onclick="LoadApplicant()" checked="checked">
                                                         <span class="custom-control-label">Existing Applicant</span>
                                                     </label>
                                                 </div>
-                                            </div>
-                                            <div class="m-b-10">
+                                            </div> 
+                                           <!--  <div class="m-b-10">
                                                 <div class = "custom-control custom-radio">
                                                     <label>
                                                         <input id="Applicant2" name="radio"  value="1" type="radio" class="custom-control-input" onclick="LoadApplicant()">
                                                         <span class="custom-control-label">New Applicant</span>
                                                     </label>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <h6 class="card-subtitle"></h6>
@@ -189,9 +189,9 @@
                                                             <div class="col-md-9">
                                                                 <select class="form-control custom-select" data-placeholder="" tabindex="1" name="loan_type">
 
-                                                                <option value="daily">Daily</option>
-                                                                <option value="weekly">Weekly</option>
-                                                                <option value="monthly">Monthly</option>
+                                                                <option value="Daily">Daily</option>
+                                                                <option value="Weekly">Weekly</option>
+                                                                <option value="Monthly">Monthly</option>
 
                                                                     
                                                                 </select>
@@ -555,6 +555,69 @@
     });
     
     </script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#loan_details').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            extApplicant: {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required and cannot be empty'
+                    },
+                    
+                    
+                }
+            },
+            area: {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required and cannot be empty'
+                    },
+                    
+                    
+                }
+            },
+            amount: {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required and cannot be empty'
+                    },
+                    
+                    
+                }
+            },
+            rate: {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required and cannot be empty'
+                    },
+                    
+                    
+                }
+            },
+            days: {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required and cannot be empty'
+                    },
+                    
+                    
+                }
+            },
+           
+          
+           
+        }
+    });
+});
+</script>
     </body>
 
     <!-- Mirrored from wrappixel.com/demos/admin-templates/monster-admin/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Mar 2018 17:36:49 GMT -->
