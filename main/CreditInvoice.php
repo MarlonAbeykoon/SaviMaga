@@ -29,16 +29,41 @@
         }
 
         function Calculate() {
+
+            var loan_type = document.getElementsByName("loan_type")[0].value;
+            //alert(loan_type);
             var amount = document.getElementsByName("amount")[0].value;
             var days = document.getElementsByName("days")[0].value;
             var rate = document.getElementsByName("rate")[0].value;
             var interest = ((amount / 100) * rate);
 
-            var dailyPay = (parseFloat((interest / 30) * days) + parseFloat(amount)) / days;
+
+            if(loan_type == 'daily'){
+                var dailyPay = (parseFloat((interest / 30) * days) + parseFloat(amount)) / days;
             var tot = dailyPay * days;
             document.getElementsByName("dpay")[0].value = dailyPay.toFixed(2);
             document.getElementsByName("tot")[0].value = tot.toFixed(2);
+            }
+
+            if(loan_type == 'weekly'){
+                var dailyPay = (parseFloat((interest / 30) * days) + parseFloat(amount)) / days;
+            var tot = dailyPay * days;
+            document.getElementsByName("dpay")[0].value = dailyPay.toFixed(2);
+            document.getElementsByName("tot")[0].value = tot.toFixed(2);
+            }
+
+            if(loan_type == 'monthly'){
+                var dailyPay = (parseFloat((interest / 30) * days) + parseFloat(amount)) / days;
+            var tot = dailyPay * days;
+            document.getElementsByName("dpay")[0].value = dailyPay.toFixed(2);
+            document.getElementsByName("tot")[0].value = tot.toFixed(2);
+            }
+
+            
         }
+
+
+
         function BackwardCalculate() {
             var amount = document.getElementsByName("amount")[0].value;
             var days = document.getElementsByName("days")[0].value;
@@ -160,6 +185,20 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
+                                                            <label class="control-label text-right col-md-3">Loan Type</label>
+                                                            <div class="col-md-9">
+                                                                <select class="form-control custom-select" data-placeholder="" tabindex="1" name="loan_type">
+
+                                                                <option value="daily">Daily</option>
+                                                                <option value="weekly">Weekly</option>
+                                                                <option value="monthly">Monthly</option>
+
+                                                                    
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
                                                             <label class="control-label text-right col-md-3">Collection Area</label>
                                                             <div class="col-md-9">
                                                                 <select class="form-control custom-select" data-placeholder="Choose a Area" tabindex="1" name="area">
@@ -175,6 +214,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                 </div>
 
@@ -202,7 +242,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
-                                                            <label class="control-label text-right col-md-3">Days</label>
+                                                            <label class="control-label text-right col-md-3">Period</label>
                                                             <div class="col-md-9">
                                                                 <input type="number" class="form-control" name="days" id="days" onchange="Calculate();" required>
                                                             </div>
