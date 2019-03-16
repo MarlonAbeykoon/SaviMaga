@@ -128,6 +128,10 @@
                                         <div class="alert alert-danger alert-rounded">Error: Please refill details and submit again.
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
                                         </div>
+                                    <?php } else if (isset($_GET['msg']) && $_GET['msg'] == "have_fail") { ?>
+                                        <div class="alert alert-danger alert-rounded">Error: This user has already applied for a loan.
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                                        </div>  
                                     <?php } ?>
                                     <h4 class="card-title">Loan Application</h4>
                                     <div class="form-group row p-t-20">

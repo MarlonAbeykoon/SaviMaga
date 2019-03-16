@@ -1,7 +1,7 @@
 <?php
 
 
-include 'DBConnection.php';
+ include 'DBConnection.php'; 
 
 
 
@@ -9,16 +9,15 @@ class control_functions {
 
 
 
-    private $con='';
-	
-	public function __construct()
-	{
-        $dbcon = new dbcon();
-        $this->con = $dbcon->dbcon_function();
-		
-	
-	}
-	
+    private $con = '';
+
+    public function __construct() {
+
+        $dbcon1 = new dbcon();
+
+        $this->con = $dbcon1->dbcon_function();
+    }
+
 
 
 
@@ -30,6 +29,9 @@ $result = mysqli_query($this->con, $query_as_f);
 			return $row['f'];
 		}
 }
+
+
+
 
 
 
