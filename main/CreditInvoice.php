@@ -557,7 +557,7 @@
     </script>
 
 <script type="text/javascript">
-$(document).ready(function() {
+$(document).ready(function() {/* 
     $('#loan_details').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
@@ -615,7 +615,7 @@ $(document).ready(function() {
           
            
         }
-    });
+    }); */
 });
 </script>
     </body>

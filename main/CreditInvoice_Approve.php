@@ -113,8 +113,8 @@
                                                                             <a href="CreditInvoice_Details.php?nic=<?php echo $result['NIC']; ?>" target="_blank" data-toggle="tooltip" data-original-title="View Customer History"> <i class="fa fa-user-secret text-inverse m-r-10"></i>View Customer History</a>
                                                                         </td>
                                                                         <td class="text-nowrap">
-                                                                            <a href="#"  onclick="ApproveLoan('<?php echo $result['idCredit_Invoice']; ?>')" data-toggle="tooltip" data-original-title="Approve Loan"> <i class="fa fa-check-circle text-inverse m-r-10"></i>Approve</a>
-                                                                            <a href="#" onclick="RejectLoan('<?php echo $result['idCredit_Invoice']; ?>')" data-toggle="tooltip" data-original-title="Reject Loan"> <i class="fa fa-times-circle text-inverse m-r-10"></i>Reject</a>
+                                                                            <a href="javascript:void(0)"  onclick="ApproveLoan('<?php echo $result['idCredit_Invoice']; ?>')" data-toggle="tooltip" data-original-title="Approve Loan"> <i class="fa fa-check-circle text-inverse m-r-10"></i>Approve</a>
+                                                                            <a href="javascript:void(0)" onclick="RejectLoan('<?php echo $result['idCredit_Invoice']; ?>')" data-toggle="tooltip" data-original-title="Reject Loan"> <i class="fa fa-times-circle text-inverse m-r-10"></i>Reject</a>
                                                                         </td>
                                                                     </tr>
                                                                 <?php } ?>
