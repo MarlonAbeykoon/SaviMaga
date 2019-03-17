@@ -57,7 +57,7 @@ if(isset($_POST['debitor_reg'])){
                         <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">New Debitor</li>
+                            <li class="breadcrumb-item active">New Customer</li>
                         </ol>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">

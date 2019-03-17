@@ -156,8 +156,8 @@ WHERE
                     function loadPaymentInfo(action) {
 
                         if (action === '1') {
-                            document.getElementById("preloader").style.opacity = "0.3"
-                            document.getElementById("preloader").style.display = "block";
+                            /* document.getElementById("preloader").style.opacity = "0.3"
+                            document.getElementById("preloader").style.display = "block"; */
                         }
 
                         var cid = $("#collector").val();
@@ -177,8 +177,8 @@ WHERE
                     }
 
                     function loadPaymentHistory(cid, name) {
-                        document.getElementById("preloader").style.opacity = "0.3"
-                        document.getElementById("preloader").style.display = "block";
+                        /* document.getElementById("preloader").style.opacity = "0.3"
+                        document.getElementById("preloader").style.display = "block"; */
 
                         var dataString = 'cid=' + cid;
                         document.getElementById("phtitle").innerHTML = "Payment History of " + name;
@@ -192,15 +192,15 @@ WHERE
                             cache: false,
                             success: function (html) {
                                 document.getElementById("PaymentHistory").innerHTML = html;
-                                document.getElementById("preloader").style.display = "none"
+                               // document.getElementById("preloader").style.display = "none"
 
                             }
                         });
                     }
 
                     function getCollectedAmount(cid) {
-                        document.getElementById("preloader").style.opacity = "0.3"
-                        document.getElementById("preloader").style.display = "block";
+                        /* document.getElementById("preloader").style.opacity = "0.3"
+                        document.getElementById("preloader").style.display = "block"; */
 
                         var dataString = 'cid=' + cid;
                         //                        document.getElementById("amountTitle").innerHTML = "Total Collected Amount Collected By "+name+" :";
@@ -213,7 +213,7 @@ WHERE
                             cache: false,
                             success: function (html) {
                                 document.getElementById("colAmount").innerHTML = "Rs: " + html;
-                                document.getElementById("preloader").style.display = "none"
+                               // document.getElementById("preloader").style.display = "none"
                                 getExpensesAmount(cid);
                             }
                         });
@@ -221,8 +221,8 @@ WHERE
 
 
                     function getExpensesAmount(cid) {
-                        document.getElementById("preloader").style.opacity = "0.3"
-                        document.getElementById("preloader").style.display = "block";
+                       /*  document.getElementById("preloader").style.opacity = "0.3"
+                        document.getElementById("preloader").style.display = "block"; */
 
                         var dataString = 'cid=' + cid;
                        
@@ -234,7 +234,7 @@ WHERE
                             success: function (html) {
                                 
                                 document.getElementById("expAmount").innerHTML = "Rs: " + html;
-                                document.getElementById("preloader").style.display = "none"
+                                //document.getElementById("preloader").style.display = "none"
                             }
                         });
                     }

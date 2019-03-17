@@ -79,7 +79,7 @@ if(isset($_GET['idDebitors'])){
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Debitor Manage</h4>
+                                <h4 class="card-title">Customer Manage</h4>
                                 <h6 class="card-subtitle"></h6>
                                 <form class="form p-t-20" id="deb_editform" name="deb_editform" action="Controller/debitorControl.php" method="POST">
 
