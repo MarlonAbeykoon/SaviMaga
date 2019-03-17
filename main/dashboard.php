@@ -238,31 +238,14 @@ on a.idUser = b.user_idUser");
                                 <div class="col-12">
                                     <div class="d-flex flex-wrap">
                                         <div>
-                                            <h3>Revenue Statistics</h3>
-                                            <h6 class="card-subtitle">2018</h6> </div>
-                                        <div class="ml-auto ">
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <h6 class="text-muted"><i class="fa fa-circle m-r-5 text-success"></i>Product A</h6> </li>
-                                            </ul>
-                                        </div>
+                                            <h3>Payment Status</h3>
+                                            <h6 class="card-subtitle"></h6> </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="total-revenue4" style="height: 350px;"></div>
+                                    <div class="ct-chart" style="height: 350px;"></div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 m-b-30 m-t-20 text-center">
-                                    <h1 class="m-b-0 font-light">---</h1>
-                                    <h6 class="text-muted">Total Revenue</h6></div>
-                                <div class="col-lg-3 col-md-6 m-b-30 m-t-20 text-center">
-                                    <h1 class="m-b-0 font-light">---</h1>
-                                    <h6 class="text-muted">Online Revenue</h6></div>
-                                <div class="col-lg-3 col-md-6 m-b-30 m-t-20 text-center">
-                                    <h1 class="m-b-0 font-light">---</h1>
-                                    <h6 class="text-muted">Product A</h6></div>
-                                <div class="col-lg-3 col-md-6 m-b-30 m-t-20 text-center">
-                                    <h1 class="m-b-0 font-light">---</h1>
-                                    <h6 class="text-muted">Product B</h6></div>
+
                             </div>
                         </div>
                     </div>
@@ -298,7 +281,7 @@ on a.idUser = b.user_idUser");
 <script src="../assets/plugins/echarts/echarts-all.js"></script>
 <script src="../assets/plugins/toast-master/js/jquery.toast.js"></script>
 <!-- Chart JS -->
-<script src="js/dashboard1.js"></script>
+<script src="js/customerDashboard.js" amntToPay = <?php echo round(($totalAmount-$totalPaidAmount), 2); ?> paidAmount = <?php echo round($totalPaidAmount,2); ?></script>
 <script src="js/toastr.js"></script>
 
 <script>
