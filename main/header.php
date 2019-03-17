@@ -226,6 +226,7 @@ WHERE user.idUser = $user_de");
 <?php if ($user_type == "customer" ) { ?>
     <li>
                     <a class="" href="customer.php" aria-expanded="false"><i class="mdi mdi-gauge"></i>My Profile </a>
+                    <a class="" href="dashboard.php" aria-expanded="false"><i class="mdi mdi-gauge"></i>My Dashboard </a>
                 </li>
     <?php }else{ ?>
 
