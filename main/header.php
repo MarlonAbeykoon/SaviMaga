@@ -226,6 +226,7 @@ WHERE user.idUser = $user_de");
 <?php if ($user_type == "customer" ) { ?>
     <li>
                     <a class="" href="customer.php" aria-expanded="false"><i class="mdi mdi-gauge"></i>My Profile </a>
+                    <a class="" href="dashboard.php" aria-expanded="false"><i class="mdi mdi-gauge"></i>My Dashboard </a>
                 </li>
     <?php }else{ ?>
 
@@ -273,7 +274,7 @@ WHERE user.idUser = $user_de");
                     <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-cart"></i><span class="hide-menu">Payments</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="MakePayment.php">Make Payment</a></li>
-                        <li><a href="CreditInvoice_Details.php">Paid History</a></li>
+                        <li><a href="Paid_histroy.php">Paid History</a></li>
 
                     </ul>
                 </li>   
@@ -304,7 +305,12 @@ WHERE user.idUser = $user_de");
                         </ul>
                     </li>
                 <?php } ?>
-
+                <?php if ($utype == 1 ) { ?>
+                    <li>
+                        <a class="has-arrow" href="apk/SaviMaga.apk" aria-expanded="false"><i class="mdi mdi-briefcase-download"></i><span class="hide-menu">Download</span></a>
+                        
+                    </li>
+                <?php } ?>
 
                  <?php } ?>
             </ul>

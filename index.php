@@ -29,6 +29,11 @@ $password = $_POST['password'];
 //exit();
 if($result == "customer"){
   header('Location: main/customer.php');
+}else if($result == "false"){
+
+  $msg ="Incorrect User Name or Password";
+
+  
 }else{
   header('Location: main');
 }
@@ -72,9 +77,10 @@ if($result == "customer"){
       <input type="text" class="form-control" name="username" placeholder="Email Address" required autofocus />
       <br>
       <input type="password" class="form-control" name="password" placeholder="Password" required/>      
-      <label class="checkbox">
+      <!-- <label class="checkbox">
         <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-      </label>
+      </label> -->
+      <p style="color: red;"><?php echo $msg; ?></p>
       <button class="btn btn-lg btn-primary btn-block" type="submit" name="login">Login</button>   
     </form>
   </div>

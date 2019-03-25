@@ -12,6 +12,8 @@ include_once '../classes/guarantor_control.php';
 
 
 
+
+
 session_start();
 
 
@@ -77,8 +79,17 @@ try {
     $loan_type = $_POST['loan_type'];
 
 
+    $credit = new Credit_Invoice();
 
 
+$query= "SELECT * FROM `credit_invoice` WHERE `Debitors_idDebitors` ='$applicantid' and `Settled` ='0' and `Status` = '1'";
+
+$have_loan = $credit -> getValue_rowcount($query);
+
+if($have_loan > 0){
+
+    header('Location:../CreditInvoice.php?msg=have_fail');
+}else{
 
 
 
@@ -124,7 +135,7 @@ try {
 
         if ($id > 0) {
 
-            $credit = new Credit_Invoice();
+            
 
             
 
@@ -158,7 +169,7 @@ try {
 
 
 
-        $credit = new Credit_Invoice();
+        
 
         $res = $credit->addCrediInvoice(bcadd(0, $totalAmount, 2), $grantAmount, $InterestRate, bcadd(0, $dailypay, 2), $days, 0, 0, $applicantid, $area, $user_de, $loan_type);
 
@@ -185,7 +196,7 @@ try {
         }
 
     }
-
+}
 //echo $res;
 
 } catch (Exception $e) {

@@ -62,10 +62,11 @@
                                             <tbody id="customers">
                                                 <?php
                                                 date_default_timezone_set("Asia/Colombo");
+                                                
 
                                                 if($user_type == 'Admin'){
                                                     $sql = mysqli_query($con, "SELECT
-collection_area_user.CollectionArea_idCollectionArea,
+
 credit_invoice.TotalAmount,
 credit_invoice.GrantAmount,
 debitors.Fname,
@@ -75,7 +76,7 @@ debitors.Address2,
 credit_invoice.idCredit_Invoice
 FROM
 credit_invoice
-INNER JOIN collection_area_user ON credit_invoice.CollectionArea_idCollectionArea = collection_area_user.CollectionArea_idCollectionArea
+
 INNER JOIN debitors ON credit_invoice.Debitors_idDebitors = debitors.idDebitors
 WHERE
 
@@ -349,7 +350,7 @@ Order by invoice_payments.DateTime Desc limit 1
                         document.getElementById("preloader").style.display = "block";
 
                         var huid = document.getElementById('huserid').value;
-                        var dataString = 'uid=' + huid;
+                        var dataString = {uid : huid,utype:"<?php echo $user_type;?>"};
                         $.ajax({
                             type: "POST",
                             url: "web/loadCustomersList.php",

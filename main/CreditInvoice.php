@@ -128,6 +128,10 @@
                                         <div class="alert alert-danger alert-rounded">Error: Please refill details and submit again.
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
                                         </div>
+                                    <?php } else if (isset($_GET['msg']) && $_GET['msg'] == "have_fail") { ?>
+                                        <div class="alert alert-danger alert-rounded">Error: This user has already applied for a loan.
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                                        </div>  
                                     <?php } ?>
                                     <h4 class="card-title">Loan Application</h4>
                                     <div class="form-group row p-t-20">
@@ -189,6 +193,7 @@
                                                             <div class="col-md-9">
                                                                 <select class="form-control custom-select" data-placeholder="" tabindex="1" name="loan_type">
 
+                                                                <option value="">-- select loan type --</option>
                                                                 <option value="Daily">Daily</option>
                                                                 <option value="Weekly">Weekly</option>
                                                                 <option value="Monthly">Monthly</option>
@@ -437,7 +442,7 @@
 
     <script>
     $(document).ready(function() {
-        var str_user_ty_required = "Please select a User Type";
+        /* var str_user_ty_required = "Please select a User Type";
 
         var str_amount_required = "Please enter your Loan Amount";
         var str_amount_regx = "Please enter a valid Loan Amount";
@@ -549,7 +554,7 @@
             }
             console.log($(this).attr('id') +' [changed] val: '+enteredValue+' class: '+$(this).attr('class'));
         }); 
-
+ */
         //--form validation code end--[PF]                                             
 
     });
@@ -575,6 +580,15 @@ $(document).ready(function() {
                     
                 }
             },
+            loan_type: {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required and cannot be empty'
+                    },
+                    
+                    
+                }
+            },
             area: {
                 validators: {
                     notEmpty: {
@@ -587,7 +601,7 @@ $(document).ready(function() {
             amount: {
                 validators: {
                     notEmpty: {
-                        message: 'This field is required and cannot be empty'
+                        message: 'Please enter your Loan Amount'
                     },
                     
                     
@@ -596,7 +610,7 @@ $(document).ready(function() {
             rate: {
                 validators: {
                     notEmpty: {
-                        message: 'This field is required and cannot be empty'
+                        message: 'Please enter loan period in Days, Eg: 21'
                     },
                     
                     
@@ -615,7 +629,7 @@ $(document).ready(function() {
           
            
         }
-    });
+    }); 
 });
 </script>
     </body>

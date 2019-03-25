@@ -80,9 +80,9 @@ if(isset($_POST['debitor_reg'])){
                                 <h4 class="card-title">Customer Registration</h4>
                                 <h6 class="card-subtitle"></h6>
 
-                                <div class="lang_select_btn" id="lang_select_btn">
+                              <!--   <div class="lang_select_btn" id="lang_select_btn">
                                     <fieldset style="float:right">
-                                        <!--<legend></legend>-->
+                                       
                                         <div>
                                             <label id="lang_select1" class="lang_select_btn_label selected">En
                                                 <input name="lang_select" id="english" type="radio" value="english" checked />
@@ -95,7 +95,7 @@ if(isset($_POST['debitor_reg'])){
                                             </label>
                                         </div>
                                     </fieldset>
-                                </div>
+                                </div> -->
 
                                 <form class="form p-t-20" id="deb_regform" name="deb_regform" action="Controller/debitorControl.php" method="POST">
 

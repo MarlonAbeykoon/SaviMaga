@@ -196,6 +196,19 @@ class Credit_Invoice {
 
 
 
+    public function getValue_rowcount($query_as_f)
+	{
+$result = mysqli_query($this->con, $query_as_f);
+		// $query_results=mysqli_query($con,$query_as_f);
+
+		$rowcount=mysqli_num_rows($result);
+		
+			return $rowcount;
+		
+}
+
+
+
 }
 
 
