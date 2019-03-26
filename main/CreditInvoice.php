@@ -193,6 +193,7 @@
                                                             <div class="col-md-9">
                                                                 <select class="form-control custom-select" data-placeholder="" tabindex="1" name="loan_type">
 
+                                                                <option value="">-- select loan type --</option>
                                                                 <option value="Daily">Daily</option>
                                                                 <option value="Weekly">Weekly</option>
                                                                 <option value="Monthly">Monthly</option>
@@ -441,7 +442,7 @@
 
     <script>
     $(document).ready(function() {
-        var str_user_ty_required = "Please select a User Type";
+        /* var str_user_ty_required = "Please select a User Type";
 
         var str_amount_required = "Please enter your Loan Amount";
         var str_amount_regx = "Please enter a valid Loan Amount";
@@ -553,7 +554,7 @@
             }
             console.log($(this).attr('id') +' [changed] val: '+enteredValue+' class: '+$(this).attr('class'));
         }); 
-
+ */
         //--form validation code end--[PF]                                             
 
     });
@@ -561,7 +562,7 @@
     </script>
 
 <script type="text/javascript">
-$(document).ready(function() {/* 
+$(document).ready(function() {
     $('#loan_details').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
@@ -571,6 +572,15 @@ $(document).ready(function() {/*
         },
         fields: {
             extApplicant: {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required and cannot be empty'
+                    },
+                    
+                    
+                }
+            },
+            loan_type: {
                 validators: {
                     notEmpty: {
                         message: 'This field is required and cannot be empty'
@@ -591,7 +601,7 @@ $(document).ready(function() {/*
             amount: {
                 validators: {
                     notEmpty: {
-                        message: 'This field is required and cannot be empty'
+                        message: 'Please enter your Loan Amount'
                     },
                     
                     
@@ -600,7 +610,7 @@ $(document).ready(function() {/*
             rate: {
                 validators: {
                     notEmpty: {
-                        message: 'This field is required and cannot be empty'
+                        message: 'Please enter loan period in Days, Eg: 21'
                     },
                     
                     
@@ -619,7 +629,7 @@ $(document).ready(function() {/*
           
            
         }
-    }); */
+    }); 
 });
 </script>
     </body>

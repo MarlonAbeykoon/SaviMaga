@@ -47,13 +47,13 @@ else
 
             if ($result) {
 
-            $_SESSION['de_msg']='<div class="alert alert-success alert-rounded"> <i class="fa fa-check-circle"></i> Debetor registration success.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
+            $_SESSION['de_msg']='<div class="alert alert-success alert-rounded"> <i class="fa fa-check-circle"></i> Customer registration success.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
             
             header('Location:../debitor_reg.php?ok');
             exit();
 
             } else {
-                $_SESSION['de_msg']='<div class="alert alert-danger alert-rounded"> <i class="fa fa-exclamation-circle"></i> Debetor registration failed.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
+                $_SESSION['de_msg']='<div class="alert alert-danger alert-rounded"> <i class="fa fa-exclamation-circle"></i> Customer registration failed.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
                 
                 header('Location:../debitor_reg.php?noop');
                 exit();
@@ -101,13 +101,13 @@ else
 
             if ($result) {
 
-            $_SESSION['de_msg']='<div class="alert alert-success alert-rounded"> <i class="fa fa-check-circle"></i> Debetor delete success.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
+            $_SESSION['de_msg']='<div class="alert alert-success alert-rounded"> <i class="fa fa-check-circle"></i> Customer delete success.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
             
             header('Location:../debitor_manage.php');
             exit();
 
             } else {
-                $_SESSION['de_msg']='<div class="alert alert-danger alert-rounded"> <i class="fa fa-exclamation-circle"></i> Debetor delete failed.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
+                $_SESSION['de_msg']='<div class="alert alert-danger alert-rounded"> <i class="fa fa-exclamation-circle"></i> Customer delete failed.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>';
                 
                 header('Location:../debitor_manage.php');
                 exit();
