@@ -65,12 +65,13 @@
                                                 <th>Name</th>
                                                 <th>Address</th>
                                                 <th>Phone No</th>
+                                                <th>User Type</th> 
                                                 <th>Options</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php
-                        $query ="SELECT idUser,Fname,Lname,`address`,pno,idUser_Details,u.Status as ustatus FROM `user_details` d join `user` u on  d.idUser_Details = u.User_Details_idUser_Details";
+                        $query ="SELECT idUser,Fname,Lname,`address`,pno,idUser_Details,u.Status as ustatus,u.User_Type_idUser_Type FROM `user_details` d join `user` u on  d.idUser_Details = u.User_Details_idUser_Details";
                         $query_ex= mysqli_query($con,$query);
                         while($row_de = mysqli_fetch_array($query_ex)){
 
@@ -85,17 +86,25 @@
                             $idUser_Details= $row_de['idUser_Details'];
                             $status= $row_de['ustatus'];
                             $idUser= $row_de['idUser'];
-                           
+                            $se_User_Type= $row_de['User_Type_idUser_Type'];
 
+                           $user_type_values = $cf->getValueAsf("SELECT `Type` as f FROM `user_type` WHERE `idUser_Type` ='$se_User_Type' ");
+                           
+                            if($user_type == 1 || $se_User_Type != 1 ){ 
                         ?>
                                             <tr>
                                                 <td><?php echo $name; ?></td>
                                                 
                                                 <td><?php echo $addres; ?></td>
-                                               
+
                                                 <td><?php echo $phone_no; ?></td>
                                                 
+                                                <td><?php echo $user_type_values; ?></td>
+                                                
+                                               
+                                                
                                                 <td>
+                                                
                                                 <a class="btn btn-sm btn-rounded btn-success"  href="user_edit.php?select_edit=change_password&idUser_Details=<?php echo $idUser_Details; ?>">Reset Password</a> 
                                                 <a class="btn btn-sm btn-rounded btn-primary" style="margin-left: 5px;" href="user_edit.php?select_edit=change_details&idUser_Details=<?php echo $idUser_Details; ?>">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
                                                 <?php
@@ -106,11 +115,14 @@
                                                 <a class="btn btn-sm btn-rounded btn-warning"  href="Controller/userControl.php?user_active=<?php echo $idUser_Details; ?>">Active</a>                                                     
                                                 <?php } 
                                                 }
+                                            
                                                 ?>
                                                  </td>
                                             </tr>
 
-                                            <?php } ?>
+                                            <?php 
+                                        } 
+                                            } ?>
                                          
                                         </tbody>
                                     </table>
@@ -151,7 +163,7 @@
                                                                 null,
                                                                 null,
                                                                 null,
-                                                                
+                                                                null,
                                                                 { "orderable": false }
                                                             ]
      });

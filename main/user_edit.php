@@ -21,6 +21,7 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
         $fname= $row_de['Fname'];
         $lname=$row_de['Lname'];
                          
+        $Uname=$row_de['Uname'];
         $addres=$row_de['address'];
         $phone_no=$row_de['pno'];
         $idUser_Type=$row_de['User_Type_idUser_Type'];
@@ -101,6 +102,18 @@ if(isset($_GET['select_edit']) && isset($_GET['idUser_Details']) ){
                         <option <?php if( $row_ut['idUser_Type'] == $idUser_Type){echo "selected";} ?> value="<?php echo $row_ut['idUser_Type']; ?>"><?php echo $row_ut['Type']; ?></option>
                         <?php } ?>
                     </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="uname">User Name</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="ti-flag"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" readonly class="form-control" value="<?php echo $Uname; ?>" name="uname" id="uname" placeholder="Username">
                                         </div>
                                     </div>
 

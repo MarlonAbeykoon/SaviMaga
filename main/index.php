@@ -46,6 +46,10 @@
             //    ga('create', 'UA-85622565-1', 'auto');
             //    ga('send', 'pageview');
         </script>
+
+<script src="js/chart/highcharts.js"></script>
+<script src="js/chart/modules/exporting.js"></script>
+<script src="js/chart/modules/export-data.js"></script>
     </head>
 
     <body class="fix-header fix-sidebar card-no-border">
@@ -248,7 +252,7 @@ invoice_payments.DateTime like '$year%'");
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-12">
+                                        <!-- <div class="col-12">
                                             <div class="d-flex flex-wrap">
                                                 <div>
                                                     <h3>Revenue Statistics</h3>
@@ -260,8 +264,8 @@ invoice_payments.DateTime like '$year%'");
                                                     </ul>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12">
+                                        </div> -->
+                                        <!-- <div class="col-12">
                                             <div class="total-revenue4" style="height: 350px;"></div>
                                         </div>
                                         <div class="col-lg-3 col-md-6 m-b-30 m-t-20 text-center">
@@ -275,7 +279,91 @@ invoice_payments.DateTime like '$year%'");
                                             <h6 class="text-muted">Product A</h6></div>
                                         <div class="col-lg-3 col-md-6 m-b-30 m-t-20 text-center">
                                             <h1 class="m-b-0 font-light">---</h1>
-                                            <h6 class="text-muted">Product B</h6></div>
+                                            <h6 class="text-muted">Product B</h6></div> -->
+
+<?php
+$query ="SELECT GROUP_CONCAT(t1.Amounts) AS amount,GROUP_CONCAT( `date`) AS date_de FROM
+(SELECT  CONCAT('{name:\"', ud.`Fname`, '\", data:[',GROUP_CONCAT(i.Amount),']}') AS Amounts , CONCAT('[', DATE_FORMAT(i.`DateTime`, '%Y/%m/%d'), ']')   AS `date` 
+FROM `invoice_payments` i LEFT JOIN `user` u ON i.`User_idUser`= u.`idUser`  LEFT JOIN `user_details` ud ON u.`User_Details_idUser_Details` = ud.`idUser_Details` 
+ GROUP BY i.`User_idUser`) t1";
+
+ $sql_chart = mysqli_query($con, $query);
+                                         while ($res_chart = mysqli_fetch_array($sql_chart)) {
+                                           /*  $amount = $res_chart['amount'];
+                                            $date_de = $res_chart['date_de']; */
+
+
+                                            $amount = "{
+                                                name: 'Aruni Perera',
+                                                data: [3, 4, 3, 5, 4, 10, 12]
+                                            }, {
+                                                name: 'Bathiya Wisidagama',
+                                                data: [1, 3, 4, 3, 3, 5, 4]
+                                            }, {
+                                                name: 'Kushan Samarasinha',
+                                                data: [5, 3, 6, 2, 1, 1, 2]
+                                            }";
+
+
+                                            $date_de = "[
+            '2019-03-27',
+            '2019-03-28',
+            '2019-03-29',
+            '2019-03-30',
+            '2019-03-31',
+            '2019-04-01',
+            '2019-04-02'
+        ]";
+                                         }
+
+?>
+
+                                            <div class="col-12">
+                                            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                            <script type="text/javascript">
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'areaspline'
+    },
+    title: {
+        text: 'Last 30 Days Collect'
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        x: 150,
+        y: 100,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+    },
+    xAxis: {
+        categories: <?php echo $date_de; ?>
+    },
+    yAxis: {
+        title: {
+            text: 'Collect'
+        }
+    },
+    tooltip: {
+        shared: true,
+        valueSuffix: ' Collect'
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        areaspline: {
+            fillOpacity: 0.5
+        }
+    },
+    series: [<?php echo $amount; ?>]
+});
+		</script>
+                                            
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -305,14 +393,14 @@ invoice_payments.DateTime like '$year%'");
         </div>
 
 
-        <script src="../assets/plugins/chartist-js/dist/chartist.min.js"></script>
-        <script src="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+        <!-- <script src="../assets/plugins/chartist-js/dist/chartist.min.js"></script>
+        <script src="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script> -->
         <!-- Chart JS -->
-        <script src="../assets/plugins/echarts/echarts-all.js"></script>
-        <script src="../assets/plugins/toast-master/js/jquery.toast.js"></script>
+        <!-- <script src="../assets/plugins/echarts/echarts-all.js"></script>
+        <script src="../assets/plugins/toast-master/js/jquery.toast.js"></script> -->
         <!-- Chart JS -->
-        <script src="js/dashboard1.js"></script>
-        <script src="js/toastr.js"></script>
+        <!-- <script src="js/dashboard1.js"></script>
+        <script src="js/toastr.js"></script> -->
 
         <script>
          /*    $.toast({
