@@ -123,13 +123,18 @@
                                 $yearProfit =0;
 
                                 //                           ------------------------- total payment query------------------------------
-                                $sql = mysqli_query($con, "select * from
-(select TotalAmount, InterestRate, Days, idCredit_Invoice from credit_invoice where Debitors_idDebitors = $user_de) b
+                                $sql = mysqli_query($con, "select b.TotalAmount, c.total_paid_amount, b.InterestRate, b.Days from 
+`user` a
+inner join
+(select idUser_Details from user_details where idUser_Details =  $user_de) d
+on a.User_Details_idUser_Details = d.idUser_Details
+left OUTER join
+credit_invoice b
+on a.idUser = b.user_idUser
 left outer join
-(select Credit_Invoice_idCredit_Invoice, sum(Amount) as total_paid_amount from 
-invoice_payments group by Credit_Invoice_idCredit_Invoice) c
-on b.idCredit_Invoice = c.Credit_Invoice_idCredit_Invoice 
-");
+(select User_idUser, sum(Amount) as total_paid_amount from 
+invoice_payments group by User_idUser) c
+on a.idUser = c.User_idUser ");
                                 while ($res = mysqli_fetch_array($sql)) {
                                     $totalAmount = $res['TotalAmount'];
                                     $totalPaidAmount = $res['total_paid_amount'];
@@ -138,11 +143,14 @@ on b.idCredit_Invoice = c.Credit_Invoice_idCredit_Invoice
                                 }
 
                                 //                           -------------------------Remaining Days------------------------------
-                                    $sql = mysqli_query($con, "select DATEDIFF(b.`DateTime`, NOW()) as remaining from 
-(select idCredit_Invoice, DateTime from credit_invoice where Debitors_idDebitors = $user_de) b
-left outer join
-(select Credit_Invoice_idCredit_Invoice from invoice_payments) c
-on b.idCredit_Invoice = c.Credit_Invoice_idCredit_Invoice ");
+                                $sql = mysqli_query($con, "select DATEDIFF(b.`DateTime`, NOW()) as remaining from 
+`user` a
+inner join
+(select idUser_Details from user_details where idUser_Details = $user_de) d
+on a.User_Details_idUser_Details = d.idUser_Details
+left OUTER join
+credit_invoice b
+on a.idUser = b.user_idUser");
                                 while ($res = mysqli_fetch_array($sql)) {
                                     $remaining = $res['remaining'];
                                 }
@@ -273,7 +281,7 @@ on b.idCredit_Invoice = c.Credit_Invoice_idCredit_Invoice ");
 <script src="../assets/plugins/echarts/echarts-all.js"></script>
 <script src="../assets/plugins/toast-master/js/jquery.toast.js"></script>
 <!-- Chart JS -->
-<script src="js/customerDashboard.js" amntToPay = <?php echo round(($totalAmount-$totalPaidAmount), 2); ?> paidAmount = <?php echo round($totalPaidAmount,2); ?> </script>
+<script src="js/customerDashboard.js" amntToPay = <?php echo round(($totalAmount-$totalPaidAmount), 2); ?> paidAmount = <?php echo round($totalPaidAmount,2); ?></script>
 <script src="js/toastr.js"></script>
 
 <script>

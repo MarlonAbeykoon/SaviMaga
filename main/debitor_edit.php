@@ -24,6 +24,7 @@ if(isset($_GET['idDebitors'])){
                             $addres1= $row_de['Address1'];
                             $addres2= $row_de['Address2'];
                             $email= $row_de['Email'];
+                            $dob= $row_de['birth_Day'];
                             $phone_no1= $row_de['Pno1'];
                             $phone_no2= $row_de['Pno2'];
                             $idDebitors= $row_de['idDebitors'];
