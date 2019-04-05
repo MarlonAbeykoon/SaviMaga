@@ -163,7 +163,8 @@ $user_type=$_SESSION['user_type'];
             $sql = mysqli_query($con, "SELECT
 user_details.Fname,
 user_details.Lname,
-`user`.User_Type_idUser_Type
+`user`.User_Type_idUser_Type,
+user_details.`idUser_Details`
 FROM
 `user`
 INNER JOIN user_details ON `user`.User_Details_idUser_Details = user_details.idUser_Details
@@ -171,6 +172,7 @@ WHERE user.idUser = $user_de");
             while ($result = mysqli_fetch_array($sql)) {
                 $utype = $result['User_Type_idUser_Type'];
                 $pname = $result['Fname']." ".$result['Lname'];
+                $idUser_Details = $result['idUser_Details'];
             }
             ?>
             <ul class="navbar-nav my-lg-0">
@@ -187,7 +189,15 @@ WHERE user.idUser = $user_de");
                                     <div class="u-img"><img src="../assets/images/users/1.jpg" alt="user"></div>
                                     <div class="u-text">
                                         <h4><?php echo $pname; ?></h4>
-                                        <p class="text-muted"></p><a href="#" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                        <p class="text-muted"></p>
+                                        <?php if($user_type == 4){ ?>
+
+                                        <a href="debitor_edit.php?idDebitors=<?php echo $user_de; ?>" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+
+                                      <?php  }else{ ?>
+                                        <a href="user_edit.php?select_edit=change_details&idUser_Details=<?php echo $idUser_Details; ?>" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                                        <?php } ?>
+                                        </div>
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>

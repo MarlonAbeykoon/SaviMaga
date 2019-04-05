@@ -282,18 +282,32 @@ invoice_payments.DateTime like '$year%'");
                                             <h6 class="text-muted">Product B</h6></div> -->
 
 <?php
-$query ="SELECT GROUP_CONCAT(t1.Amounts) AS amount,GROUP_CONCAT( `date`) AS date_de FROM
-(SELECT  CONCAT('{name:\"', ud.`Fname`, '\", data:[',GROUP_CONCAT(i.Amount),']}') AS Amounts , CONCAT('[', DATE_FORMAT(i.`DateTime`, '%Y/%m/%d'), ']')   AS `date` 
-FROM `invoice_payments` i LEFT JOIN `user` u ON i.`User_idUser`= u.`idUser`  LEFT JOIN `user_details` ud ON u.`User_Details_idUser_Details` = ud.`idUser_Details` 
- GROUP BY i.`User_idUser`) t1";
+$query ="
+ SELECT 
+CONCAT('{name:\"', tin.`Fname`, '\", data:[',GROUP_CONCAT(tin.amunts),']}') AS Amounts ,
+ CONCAT('[', GROUP_CONCAT('\"',DATE_FORMAT(td.`dates_invoice`, '%Y/%m/%d'),'\"') ,']')   AS `date`
+
+ FROM
+(SELECT DISTINCT DATE_FORMAT(`DateTime`, '%Y/%m/%d') AS dates_invoice FROM `invoice_payments` ORDER BY `DateTime` ASC) td JOIN 
+(SELECT i.`DateTime`, SUM(i.Amount) AS amunts ,ud.`Fname`
+ 
+FROM `invoice_payments` i LEFT JOIN `user` u ON i.`User_idUser`= u.`idUser`  LEFT JOIN `user_details` ud ON 
+u.`User_Details_idUser_Details` = ud.`idUser_Details` GROUP BY i.`User_idUser`, DATE_FORMAT(i.`DateTime`, '%Y/%m/%d'), ']' ORDER BY i.`DateTime`) tin ON td.dates_invoice = DATE_FORMAT(tin.`DateTime`, '%Y/%m/%d')
+
+
+
+
+
+ 
+ ";
 
  $sql_chart = mysqli_query($con, $query);
                                          while ($res_chart = mysqli_fetch_array($sql_chart)) {
-                                           /*  $amount = $res_chart['amount'];
-                                            $date_de = $res_chart['date_de']; */
+                                             $amount = $res_chart['Amounts'];
+                                            $date_de = $res_chart['date']; 
 
 
-                                            $amount = "{
+                                   /*          $amount = "{
                                                 name: 'Aruni Perera',
                                                 data: [3, 4, 3, 5, 4, 10, 12]
                                             }, {
@@ -314,7 +328,7 @@ FROM `invoice_payments` i LEFT JOIN `user` u ON i.`User_idUser`= u.`idUser`  LEF
             '2019-04-01',
             '2019-04-02'
         ]";
-                                         }
+                        */                  }
 
 ?>
 
