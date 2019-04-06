@@ -283,28 +283,33 @@ invoice_payments.DateTime like '$year%'");
 
 <?php
 $query ="
- SELECT 
-CONCAT('{name:\"', tin.`Fname`, '\", data:[',GROUP_CONCAT(tin.amunts),']}') AS Amounts ,
- CONCAT('[', GROUP_CONCAT('\"',DATE_FORMAT(td.`dates_invoice`, '%Y/%m/%d'),'\"') ,']')   AS `date`
+SELECT CONCAT('[',GROUP_CONCAT(DISTINCT a),']') AS date_de,GROUP_CONCAT(b) AS acount FROM
 
- FROM
-(SELECT DISTINCT DATE_FORMAT(`DateTime`, '%Y/%m/%d') AS dates_invoice FROM `invoice_payments` ORDER BY `DateTime` ASC) td JOIN 
-(SELECT i.`DateTime`, SUM(i.Amount) AS amunts ,ud.`Fname`
- 
+(SELECT GROUP_CONCAT(d ORDER BY d) AS a, CONCAT('{name:\'',GROUP_CONCAT(DISTINCT Fname),'\',data:[',GROUP_CONCAT(Amount ORDER BY d),']}') AS b FROM
+
+(SELECT CONCAT('\'',t1.d,'\'') AS d , t1.Fname,IFNULL(t2.amunts,0) AS Amount FROM
+(
+SELECT ta.*,tb.* FROM
+(SELECT DATE_FORMAT(@d := DATE_ADD(@d, INTERVAL 1 DAY), '%Y-%m-%d') AS `d`
+FROM (SELECT @N := @N +1 AS rownumber FROM INFORMATION_SCHEMA.COLUMNS, (SELECT @N:=0) dummyRowNums LIMIT 30) d, 
+(SELECT @d := DATE_SUB(NOW(), INTERVAL 30 DAY)) `X` LIMIT 30) ta JOIN
+(SELECT DISTINCT ud.`Fname`
 FROM `invoice_payments` i LEFT JOIN `user` u ON i.`User_idUser`= u.`idUser`  LEFT JOIN `user_details` ud ON 
-u.`User_Details_idUser_Details` = ud.`idUser_Details` GROUP BY i.`User_idUser`, DATE_FORMAT(i.`DateTime`, '%Y/%m/%d'), ']' ORDER BY i.`DateTime`) tin ON td.dates_invoice = DATE_FORMAT(tin.`DateTime`, '%Y/%m/%d')
-
-
-
-
+u.`User_Details_idUser_Details` = ud.`idUser_Details`) tb
+) t1
+LEFT JOIN
+(SELECT DATE_FORMAT(i.`DateTime`, '%Y-%m-%d') AS `date`, SUM(i.Amount) AS amunts ,ud.`Fname`
+FROM `invoice_payments` i LEFT JOIN `user` u ON i.`User_idUser`= u.`idUser`  LEFT JOIN `user_details` ud ON 
+u.`User_Details_idUser_Details` = ud.`idUser_Details` GROUP BY i.`User_idUser`, DATE_FORMAT(i.`DateTime`, '%Y-%m-%d')) t2 
+ON t1.d = t2.date AND t1.Fname=t2.Fname ORDER BY Fname,d) t GROUP BY Fname) t0
 
  
  ";
 
  $sql_chart = mysqli_query($con, $query);
                                          while ($res_chart = mysqli_fetch_array($sql_chart)) {
-                                             $amount = $res_chart['Amounts'];
-                                            $date_de = $res_chart['date']; 
+                                             $amount = $res_chart['acount'];
+                                            $date_de = $res_chart['date_de']; 
 
 
                                    /*          $amount = "{
