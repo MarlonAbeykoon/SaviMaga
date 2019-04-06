@@ -180,7 +180,7 @@ invoice_payments.DateTime like '$year%'");
                                         
 //                           -------------------------yearly income------------------------------                                         
                                         ?>
-                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> Rs.<?php echo round($todayProfit,2); ?></h2>
+                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-success"></i> Rs.<?php echo number_format(round($todayProfit,2),2); ?></h2>
                                         <span class="text-muted">Todays Income</span>
                                     </div>
                                   <!--   <span class="text-success"><?php echo round(($todayProfit/$weekProfit)*100,2); ?>%</span> -->
@@ -198,7 +198,7 @@ invoice_payments.DateTime like '$year%'");
                                 <div class="card-body">
                                     <h4 class="card-title">Weekly Collect</h4>
                                     <div class="text-right">
-                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i> Rs.<?php echo round($weekProfit,2); ?></h2>
+                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-info"></i> Rs.<?php echo number_format(round($weekProfit,2),2); ?></h2>
                                         <span class="text-muted">Weekly Income</span>
                                     </div>
                                     <span class="text-info"><?php echo round(($weekProfit/$monthProfit)*100,2); ?>%</span>
@@ -215,7 +215,7 @@ invoice_payments.DateTime like '$year%'");
                                 <div class="card-body">
                                     <h4 class="card-title">Monthly Collect</h4>
                                     <div class="text-right">
-                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-purple"></i> Rs.<?php echo round($monthProfit,2); ?></h2>
+                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-purple"></i> Rs.<?php echo number_format(round($monthProfit,2),2); ?></h2>
                                         <span class="text-muted">Monthly Income</span>
                                     </div>
                                     <span class="text-purple"><?php echo round(($monthProfit/$yearProfit)*100,2); ?>%</span>
@@ -232,7 +232,7 @@ invoice_payments.DateTime like '$year%'");
                                 <div class="card-body">
                                     <h4 class="card-title">Yearly Collect</h4>
                                     <div class="text-right">
-                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-danger"></i> Rs.<?php echo round($yearProfit,2); ?></h2>
+                                        <h2 class="font-light m-b-0"><i class="ti-arrow-up text-danger"></i> Rs.<?php echo number_format(round($yearProfit,2),2); ?></h2>
                                         <span class="text-muted">Todays Income</span>
                                     </div>
                                     <span class="text-danger">100%</span>
