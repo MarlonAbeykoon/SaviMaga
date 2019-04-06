@@ -298,7 +298,7 @@ FROM `invoice_payments` i LEFT JOIN `user` u ON i.`User_idUser`= u.`idUser`  LEF
 u.`User_Details_idUser_Details` = ud.`idUser_Details`) tb
 ) t1
 LEFT JOIN
-(SELECT DATE_FORMAT(i.`DateTime`, '%Y-%m-%d') AS `date`,SUM(i.Amount), as varchar)` AS amunts ,ud.`Fname`
+(SELECT DATE_FORMAT(i.`DateTime`, '%Y-%m-%d') AS `date`, SUM(i.Amount) AS amunts ,ud.`Fname`
 FROM `invoice_payments` i LEFT JOIN `user` u ON i.`User_idUser`= u.`idUser`  LEFT JOIN `user_details` ud ON 
 u.`User_Details_idUser_Details` = ud.`idUser_Details` GROUP BY i.`User_idUser`, DATE_FORMAT(i.`DateTime`, '%Y-%m-%d')) t2 
 ON t1.d = t2.date AND t1.Fname=t2.Fname ORDER BY Fname,d) t GROUP BY Fname) t0
