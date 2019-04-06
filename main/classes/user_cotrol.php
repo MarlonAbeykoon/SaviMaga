@@ -17,7 +17,7 @@ class user_function {
 
     /* $cf = new control_functions(); */
 
-    public function user_reg($fname, $lname, $path, $uname, $pass, $utype, $address, $pno) {
+    public function user_reg($fname, $lname, $path, $uname, $pass, $utype, $address, $pno, $debitorsId) {
 
         $query = "INSERT INTO `user_details` ( `Fname`, `Lname`, `Path`,`address` , `pno` ,`Status`) VALUES ( '$fname', '$lname', '$path', '$address', '$pno','1')";
 
@@ -25,9 +25,12 @@ class user_function {
 
 
         if ($query_ex) {
-            $new_user_id = mysqli_insert_id($this->con);
+             $new_user_id = 0;
 
-            $query1 = "INSERT INTO `user` (`Uname`, `Pass`, `User_Type_idUser_Type`, `User_Details_idUser_Details`, `Status`) VALUES ('$uname', '$pass', '$utype', '$new_user_id', '1')";
+            if($debitorsId == null)
+                $new_user_id = mysqli_insert_id($this->con);
+
+            $query1 = "INSERT INTO `user` (`Uname`, `Pass`, `User_Type_idUser_Type`, `User_Details_idUser_Details`, `debitors_idDebitors`, `Status`) VALUES ('$uname', '$pass', '$utype', '$new_user_id', '$debitorsId', '1')";
 
             $query_ex1 = mysqli_query($this->con, $query1);
 
@@ -44,7 +47,7 @@ class user_function {
         }
     }
 
-    public function user_update($idUser_Details, $fname, $lname, $path, $utype, $address, $pno) {
+    public function user_update($idUser_Details, $fname, $lname, $path, $utype, $address, $pno,$debitorsId) {
 
 
         // $user_id = $cf->getValueAsf($query_v);

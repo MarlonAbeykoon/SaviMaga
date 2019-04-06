@@ -203,7 +203,7 @@ invoice_payments.DateTime like '$year%'");
                                     </div>
                                     <span class="text-info"><?php echo round(($weekProfit/$monthProfit)*100,2); ?>%</span>
                                     <div class="progress">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo round(($weekProfit/$monthProfit)*100,2); ?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 100px; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -256,7 +256,7 @@ invoice_payments.DateTime like '$year%'");
                                             <div class="d-flex flex-wrap">
                                                 <div>
                                                     <h3>Revenue Statistics</h3>
-                                                    <h6 class="card-subtitle">2018</h6> </div>
+                                                    <h6 class="card-subtitle">2019</h6> </div>
                                                 <div class="ml-auto ">
                                                     <ul class="list-inline">
                                                         <li>

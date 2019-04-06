@@ -149,6 +149,19 @@ if(isset($_POST['debitor_reg'])){
                                         </div>
                                     </div>
 
+
+                                    <div class="form-group">
+                                        <label for="exampleInputDOB">Date of Birth</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="ti-dob"></i>
+                                                </span>
+                                            </div>
+                                            <input type="date" class="form-control" name="dob" id="dob" placeholder="Enter select a date of birth">
+                                        </div>
+                                    </div>
+
                                      <div class="form-group">
                                         <label for="exampleInputuname">Address 1</label>
                                         <div class="input-group">
@@ -174,7 +187,7 @@ if(isset($_POST['debitor_reg'])){
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleInputuname">Phone No 1</label>
+                                        <label for="exampleInputphone">Phone No 1</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">
@@ -186,7 +199,7 @@ if(isset($_POST['debitor_reg'])){
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="exampleInputuname">Phone No 2</label>
+                                        <label for="exampleInputphone2">Phone No 2</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">
@@ -197,7 +210,7 @@ if(isset($_POST['debitor_reg'])){
                                         </div>
                                     </div>
                                     
-                                   <!--  <div class="form-group">
+                                   <div class="form-group">
                                         <label for="pwd1">Password</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -205,7 +218,7 @@ if(isset($_POST['debitor_reg'])){
                                                     <i class="ti-lock"></i>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control" id="pwd1" placeholder="Enter email">
+                                            <input type="password" class="form-control" name="pwd1"  id="pwd1" placeholder="Enter Password">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -216,10 +229,9 @@ if(isset($_POST['debitor_reg'])){
                                                     <i class="ti-lock"></i>
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control" id="pwd2" placeholder="Enter email">
+                                            <input type="password" class="form-control" name="pwd2"  id="pwd2" placeholder="Enter Password">
                                         </div>
                                     </div>
- -->
                                     <button type="submit" name="debitor_reg" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                                     <a href="debitor_reg.php" class="btn btn-inverse waves-effect waves-light">Cancel</a>
                                 </form>
@@ -255,7 +267,7 @@ if(isset($_POST['debitor_reg'])){
         var str_inputNIC_required = "Please enter your National ID Card number";
         var str_inputNIC_minlength = "Your National ID card number consists of at least 9 characters";
         var str_inputNIC_regx = "For example: 850961188v or 198509601188";
-
+        var str_inputDOB_regx = "Please select a date of birth";
         var str_inputNameF_required = "Please enter your First Name";
         var str_inputNameF_minlength = "Please enter a valid First Name";
         var str_inputNameF_maxlength = "Your First Name seems too long!";
@@ -284,70 +296,12 @@ if(isset($_POST['debitor_reg'])){
         var str_phone2_maxlength = "Your number is too long to be valid";
         var str_phone2_regx = "Please enter a valid Phone number";  
 
+        var str_pass_required = "Please the password is required";
+        var str_pass_minlength = "Your password must have at least 6 characters";
 
-        var str_inputNIC_required_sinhala = "කරුණාකර ඔබගේ ජාතික හැදුනුම්පත් අ. ඇතුලත් කරන්න";
-        var str_inputNIC_minlength_sinhala = "ඔබගේ ජාතික හැදුනුම්පත් අංකය සදහා අවම වශයෙන් ඉල්ලක්කම් 9ක් ඇත";
-        var str_inputNIC_regx_sinhala = "උදාහරනයක් වශයෙන්: 850961188v හෝ 198509601188";
-
-        var str_inputNIC_required_tamil = "உங்கள் தேசிய அடையாள அட்டை எண்ணை உள்ளிடவும்";
-        var str_inputNIC_minlength_tamil = "உங்கள் தேசிய அடையாள அட்டையில் 9 கடிதங்கள் உள்ளன";
-        var str_inputNIC_regx_tamil = "உதாரணமாக: 850961188v அல்லது 198509601188";
-
-        var str_inputNameF_required_sinhala = "කරුණාකර ඔබගේ පළමු නම ඇතුලත් කරන්න";
-        var str_inputNameF_minlength_sinhala = "කරුණාකර වලංගු පළමු නමක් ඇතුළත් කරන්න";
-        var str_inputNameF_maxlength_sinhala = "ඔබේ පළමු නම දිග වැඩියි!";
-        var str_inputNameF_regx_sinhala = "කරුණාකර වලංගු අක්ෂර ඇතුලත් කරන්න";
-
-        var str_inputNameF_required_tamil = "உங்கள் முதல் பெயரை உள்ளிடவும்";
-        var str_inputNameF_minlength_tamil = "செல்லுபடியாகும் முதல் பெயரை உள்ளிடுக";
-        var str_inputNameF_maxlength_tamil = "உங்கள் முதல் பெயர் மிக நீண்டதாக தோன்றுகிறது!";
-        var str_inputNameF_regx_tamil = "சரியான எழுத்துக்களை உள்ளிடுக";
-
-        var str_inputNameL_required_sinhala = "කරුණාකර වලංගු අවසාන නමක් ඇතුළත් කරන්න";
-        var str_inputNameL_minlength_sinhala = "කරුණාකර ඔබේ නිවැරදි අවසන් නම ඇතුලත් කරන්න";
-        var str_inputNameL_maxlength_sinhala = "ඔබේ අවසාන නම දිග වැඩියි!"; 
-        var str_inputNameL_regx_sinhala = "කරුණාකර වලංගු අක්ෂර ඇතුලත් කරන්න";
-
-        var str_inputNameL_required_tamil = "சரியான கடைசி பெயரை உள்ளிடுக";
-        var str_inputNameL_minlength_tamil = "கடைசி கடைசி பெயரை உள்ளிடவும்"; 
-        var str_inputNameL_maxlength_tamil = "உங்கள் கடைசி பெயர் நீண்டது"; 
-        var str_inputNameL_regx_tamil = "சரியான எழுத்துக்களை உள்ளிடுக";        
-
-        var str_inputAddress1_required_sinhala = "කරුණාකර ඔබේ ලිපින පේළිය 1 ඇතුලත් කරන්න";
-        var str_inputAddress1_minlength_sinhala = "කරුණාකර වලංගු ලිපින පේළිය 1 ඇතුලත් කරන්න";
-        var str_inputAddress1_maxlength_sinhala = "ඔබේ ලිපින පේළිය 1 දිග වැඩියි!";
-
-        var str_inputAddress1_required_tamil = "உங்கள் முகவரி வரி 1 ஐ உள்ளிடவும்";
-        var str_inputAddress1_minlength_tamil = "சரியான முகவரி வரி 1 ஐ உள்ளிடுக";
-        var str_inputAddress1_maxlength_tamil = "உங்கள் முகவரி வரி 1 மிக நீளமாக உள்ளது!";
-
-        var str_inputAddress2_required_sinhala = "කරුණාකර ඔබේ ලිපින පේළිය 2 ඇතුලත් කරන්න";
-        var str_inputAddress2_minlength_sinhala = "කරුණාකර වලංගු ලිපින පේළිය 2 ඇතුලත් කරන්න";
-        var str_inputAddress2_maxlength_sinhala = "ඔබේ ලිපින පේළිය 2 දිග වැඩියි!";
-
-        var str_inputAddress2_required_tamil = "உங்கள் முகவரி வரி 2 ஐ உள்ளிடவும்";
-        var str_inputAddress2_minlength_tamil = "சரியான முகவரி வரி 2 ஐ உள்ளிடுக";
-        var str_inputAddress2_maxlength_tamil = "உங்கள் முகவரி வரி 2 மிக நீளமாக உள்ளது!";
-
-        var str_phone1_required_sinhala = "කරුණාකර ඔබගේ දුරකථන අංකය ඇතුළත් කරන්න";
-        var str_phone1_minlength_sinhala = "ඔබගේ දුරකථන අංකයේ ඉලක්කන් අඩුය";
-        var str_phone1_maxlength_sinhala = "ඔබේ අංකය දිග වැඩිය";
-        var str_phone1_regx_sinhala = "කරුණාකර වලංගු දුරකථන අංකය ඇතුලත් කරන්න";
-
-        var str_phone1_required_tamil = "உங்கள் தொடர்பு எண்ணை அளிக்கவும்";
-        var str_phone1_minlength_tamil = "உங்கள் தொலைபேசி எண் மிகவும் குறுகியதாக உள்ளது";
-        var str_phone1_maxlength_tamil = "உங்கள் எண் மிக நீளமாக உள்ளது";
-        var str_phone1_regx_tamil = "சரியான தொலைபேசி எண்ணை உள்ளிடுக";
-
-        var str_phone2_required_sinhala = "කරුණාකර ඔබගේ දුරකථන අංකය ඇතුළත් කරන්න";
-        var str_phone2_minlength_sinhala = "ඔබගේ දුරකථන අංකයේ ඉලක්කන් අඩුය";
-        var str_phone2_maxlength_sinhala = "ඔබේ අංකය දිග වැඩිය";
-        var str_phone2_regx_sinhala = "කරුණාකර වලංගු දුරකථන අංකය ඇතුලත් කරන්න";
-
-        var str_phone2_required_tamil = "உங்கள் தொடர்பு எண்ணை அளிக்கவும்";
-        var str_phone2_minlength_tamil = "உங்கள் தொலைபேசி எண் மிகவும் குறுகியதாக உள்ளது";
-        var str_phone2_maxlength_tamil = "உங்கள் எண் மிக நீளமாக உள்ளது";
-        var str_phone2_regx_tamil = "சரியான தொலைபேசி எண்ணை உள்ளிடுக";
+        var str_cpass_required = "Please the confirm password is required";
+        var str_cpass_minlength = "Your confirm password must have at least 6 characters";  
+        var str_cpass_equalTo = "This should match with the password above"; 
 
         $(document).ready(function() {
 
@@ -387,22 +341,21 @@ if(isset($_POST['debitor_reg'])){
                         minlength: 3,
                         maxlength: 100 //--should decide on this [PF]
                     },
-                    address2: {
-                        required: true, 
-                        minlength: 3,
-                        maxlength: 100 //--should decide on this [PF]
-                    },
                     phno1: {
                         required: true, 
                         minlength: 7,
                         regx: /^[0-9-+]{7,}$/,
                         maxlength: 14
                     },
-                    phno2: {
-                        minlength: 7,
-                        regx: /^[0-9-+]{7,}$/,
-                        maxlength: 14
-                    }                                      
+                    pass: {
+                        required: true,
+                        minlength: 6    //--should decide on this [PF]
+                    }, 
+                    cpass: {
+                        required: true,
+                        minlength: 5,
+                        equalTo: "#pass"
+                    }                                     
                 },
                 messages: {
                     nic: {
@@ -422,15 +375,13 @@ if(isset($_POST['debitor_reg'])){
                         maxlength: str_inputNameL_maxlength,
                         regx: str_inputNameL_regx
                     },
+                    dob:{
+                         required: str_inputDOB_regx
+                    },
                     address1: {
                         required: str_inputAddress1_required,
                         minlength: str_inputAddress1_minlength,
                         maxlength: str_inputAddress1_maxlength
-                    },
-                    address2: {
-                        required: str_inputAddress2_required,
-                        minlength: str_inputAddress2_minlength,
-                        maxlength: str_inputAddress2_maxlength
                     },
                     phno1: {
                         required: str_phone1_required, 
@@ -438,10 +389,14 @@ if(isset($_POST['debitor_reg'])){
                         maxlength: str_phone1_maxlength,
                         regx: str_phone1_regx
                     },
-                    phno2: {
-                        minlength: str_phone2_minlength,
-                        maxlength: str_phone2_maxlength,
-                        regx: str_phone2_regx
+                    pass: {
+                        required: str_pass_required, 
+                        minlength: str_pass_minlength
+                    },
+                    cpass: {
+                        required: str_cpass_required, 
+                        minlength: str_cpass_minlength,
+                        equalTo: str_cpass_equalTo
                     }
                 },
                 validClass: "success",

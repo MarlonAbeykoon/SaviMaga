@@ -308,7 +308,7 @@ if(isset($_POST['user_re'])){
                 cpass: {
                     required: true,
                     minlength: 5,
-                    equalTo: "#pass"
+                    equalTo: "pass"
                 }
             },
             messages: {
@@ -382,42 +382,7 @@ if(isset($_POST['user_re'])){
             }
         });
 
-        //these edits are important for form validation to works nicely--[PF]
-        $("#user_regform input, #user_regform select").focus(function() {
-            //checkboxes also includes if any
-            var enteredValue = $(this).val();
-            console.log($(this).attr('id') +' [focused] val: '+enteredValue+' class: '+$(this).attr('class'));
-
-            //removing success class when no valid value (Choose.. OR selectedIndex is 0) selected in a dropdown (on focus of dropdown menu)
-            if( ($(this)[0].selectedIndex == 0) && $(this).hasClass('success')) {
-                $(this).removeClass('success');
-            }  
-        });
-
-        //these edits are important for form validation to works nicely--[PF]
-        $("#user_regform input, #user_regform select").blur(function() {
-            //checkboxes also includes
-            var enteredValue = $(this).val();
-            console.log($(this).attr('id') +' [blured] val: '+enteredValue +' class: '+$(this).attr('class'));
-            
-            if( (enteredValue == null || enteredValue == "") && $(this).hasClass('success')) {
-                $(this).removeClass('success');
-            }
-
-            if( ($(this)[0].selectedIndex == 0) && $(this).hasClass('success')) {
-                $(this).removeClass('success');
-            }                     
-        });            
-        
-        //--[PF]
-        $("#user_regform select").change(function() {
-            var enteredValue = $(this).val();
-            if( enteredValue == ""){
-                //trigger
-                $("#user_regform").validate().element( "#"+$(this).attr('id') );
-            }
-            console.log($(this).attr('id') +' [changed] val: '+enteredValue+' class: '+$(this).attr('class'));
-        }); 
+      
 
         //--form validation code end--[PF]
     }); 
