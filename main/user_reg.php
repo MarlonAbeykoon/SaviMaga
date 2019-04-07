@@ -308,7 +308,7 @@ if(isset($_POST['user_re'])){
                 cpass: {
                     required: true,
                     minlength: 5,
-                    equalTo: "pass"
+                    equalTo: "#pass"
                 }
             },
             messages: {
