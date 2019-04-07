@@ -82,6 +82,7 @@
                                                                 $sql = mysqli_query($con, "SELECT
                                                             debitors.NIC,
                                                             debitors.Fname,
+                                                            debitors.Pno,
                                                             credit_invoice.idCredit_Invoice,
                                                             credit_invoice.TotalAmount,
                                                             credit_invoice.PaidAmount,
@@ -113,8 +114,8 @@
                                                                             <a href="CreditInvoice_Details.php?nic=<?php echo $result['NIC']; ?>" target="_blank" data-toggle="tooltip" data-original-title="View Customer History"> <i class="fa fa-user-secret text-inverse m-r-10"></i>View Customer History</a>
                                                                         </td>
                                                                         <td class="text-nowrap">
-                                                                            <a href="javascript:void(0)"  onclick="ApproveLoan('<?php echo $result['idCredit_Invoice']; ?>')" data-toggle="tooltip" data-original-title="Approve Loan"> <i class="fa fa-check-circle text-inverse m-r-10"></i>Approve</a>
-                                                                            <a href="javascript:void(0)" onclick="RejectLoan('<?php echo $result['idCredit_Invoice']; ?>')" data-toggle="tooltip" data-original-title="Reject Loan"> <i class="fa fa-times-circle text-inverse m-r-10"></i>Reject</a>
+                                                                            <a href="javascript:void(0)"  onclick="ApproveLoan('<?php echo $result['idCredit_Invoice']; ?>','<?php echo $result['Pno1']; ?>')" data-toggle="tooltip" data-original-title="Approve Loan"> <i class="fa fa-check-circle text-inverse m-r-10"></i>Approve</a>
+                                                                            <a href="javascript:void(0)" onclick="RejectLoan('<?php echo $result['idCredit_Invoice']; ?>','<?php echo $result['Pno1']; ?>')" data-toggle="tooltip" data-original-title="Reject Loan"> <i class="fa fa-times-circle text-inverse m-r-10"></i>Reject</a>
                                                                         </td>
                                                                     </tr>
                                                                 <?php } ?>
@@ -140,7 +141,7 @@
                 </div>
 
                 <script >
-                    function ApproveLoan(cid) {
+                    function ApproveLoan(cid,phoneno) {
 
                         swal({
                             title: "Are you sure?",
@@ -166,7 +167,23 @@
                                     success: function (html) {
                                         if (html === '1') {
                                             swal("Approved!", "Loan Approved Successfuly.", "success");
+
+                                            var user = "94771143449";
+                                            var password = "1350";
+                                            var text = "Dear Customer, We have approved your loan application. SaviMaga";
+                                            var to = "94" + phoneno;
+
+                                            var baseurl ="http://www.textit.biz/sendmsg";
+                                            var url2 = baseurl+"/?id="+user+"&pw="+password+"&to="+to+"&text="+text;
+                                            // Create a request variable and assign a new XMLHttpRequest object to it.
+                                            var request = new XMLHttpRequest();
+
+                                            // Open a new connection, using the GET request on the URL endpoint
+                                            request.open('GET', url2, true);
+                                            // Send request
+                                            request.send();
                                             location.reload();
+
                                         } else {
                                             swal("System Error!", "", "error")
                                         }
@@ -181,7 +198,7 @@
                         });
                     }
 
-                    function RejectLoan(cid) {
+                    function RejectLoan(cid,phoneno) {
 
                         swal({
                             title: "Are you sure?",
@@ -207,6 +224,20 @@
                                     success: function (html) {
                                         if (html === '1') {
                                             swal("Rejected!", "Loan Rejected Successfuly.", "success");
+
+                                            var user = "94771143449";
+                                            var password = "1350";
+                                            var text = "Dear Customer, We have rejected your loan application. SaviMaga";
+                                            var to = "94" + phoneno;
+
+                                            var baseurl ="http://www.textit.biz/sendmsg";
+                                            var url2 = baseurl+"/?id="+user+"&pw="+password+"&to="+to+"&text="+text;
+                                            var request = new XMLHttpRequest();
+
+                                            // Open a new connection, using the GET request on the URL endpoint
+                                            request.open('GET', url2, true);
+                                            // Send request
+                                            request.send();
                                             location.reload();
                                         } else {
                                             swal("System Error!", "", "error")
