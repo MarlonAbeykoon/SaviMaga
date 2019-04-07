@@ -14,15 +14,7 @@
 
 
 
-/**
 
- * Description of Credit_Invoice
-
- *
-
- * @author Shashika
-
- */
 
 date_default_timezone_set("Asia/Colombo");
 
